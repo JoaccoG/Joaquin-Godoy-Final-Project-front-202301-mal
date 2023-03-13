@@ -1,0 +1,22 @@
+name: Testing
+
+on: push
+
+jobs:
+  test:
+    name: Tests passes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇ Git checkout
+        uses: actions/checkout@v3
+
+      - name: 💾 Install modules
+        run: npm ci
+
+      - name: 🧪 Testing
+        run: npm test -- --watchAll=false
+        env:
+          PASSWORD_ENCRYPTION_ALGORITHM: ${{ secrets.PASSWORD_ENCRYPTION_ALGORITHM }}
+          PASSWORD_ENCRYPTION_KEY: ${{ secrets.PASSWORD_ENCRYPTION_KEY }}
+          JWT_SECRET: ${{ secrets.JWT_SECRET }}
