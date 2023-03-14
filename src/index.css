@@ -1,5 +1,4 @@
 /* -------->>> Fonts <<<-------- */
-
 /* ----->> Inter <<----- */
 @font-face {
   font-family: 'Inter-Light';
@@ -56,4 +55,18 @@ li {
 
 a {
   text-decoration: none;
+}
+
+/* -------->>> General <<<-------- */
+html {
+  font-family: var(--font-family-inter-regular);
+  font-weight: var(--font-weight-regular);
+}
+
+body {
+  color: var(--color-primary);
+  background: var(--bg-color-primary);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
