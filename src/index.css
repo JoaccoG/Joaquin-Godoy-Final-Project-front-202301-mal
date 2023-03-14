@@ -1,5 +1,45 @@
 /* -------->>> Fonts <<<-------- */
 
+/* ----->> Inter <<----- */
+@font-face {
+  font-family: 'Inter-Light';
+  src: local('Inter'),
+    url('/public/assets/fonts/Inter/Inter-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Inter-Regular';
+  src: local('Inter'),
+    url('/public/assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Inter-Bold';
+  src: local('Inter'),
+    url('/public/assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+/* ----->> Ubuntu <<----- */
+@font-face {
+  font-family: 'Ubuntu-Light';
+  src: local('Ubuntu'),
+    url('/public/assets/fonts/Ubuntu/Ubuntu-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+@font-face {
+  font-family: 'Ubuntu-Regular';
+  src: local('Ubuntu'),
+    url('/public/assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Ubuntu-Bold';
+  src: local('Ubuntu'),
+    url('/public/assets/fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
 /* -------->>> Resets <<<-------- */
 *,
 *::before,

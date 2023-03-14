@@ -1,0 +1,86 @@
+:root {
+  /* COLORS */
+  --color-primary: hsl(0, 0%, 100%);
+  --color-secondary: hsl(231, 13%, 59%);
+  --color-tertiary: hsl(14, 98%, 65%);
+  --color-success: hsl(120, 50%, 50%);
+  --color-warning: hsl(60, 50%, 50%);
+  --color-danger: hsl(0, 50%, 50%);
+
+  /* BACKGROUND COLORS */
+  --bg-color-primary: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.4) 100%
+    ),
+    #181227;
+  --bg-color-secondary: hsl(253, 27%, 17%);
+  --bg-color-tertiary: hsl(252, 26%, 26%);
+  --bg-color-success: hsl(120, 50%, 50%);
+  --bg-color-warning: hsl(60, 50%, 50%);
+  --bg-color-danger: hsl(0, 50%, 50%);
+  --bg-solid-opacity-primary: rgba(0, 0, 0, 0.3);
+  --bg-solid-opacity-secondary: rgba(0, 0, 0, 0.5);
+  --bg-solid-opacity-tertiary: rgba(0, 0, 0, 0.75);
+  --bg-linear-opacity-primary: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  --bg-linear-opacity-secondary: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+
+  /* MARGINS */
+  --margin-xxs: 0.5rem;
+  --margin-xs: 0.75rem;
+  --margin-s: 1rem;
+  --margin-m: 1.5rem;
+  --margin-l: 2rem;
+  --margin-xl: 2.5rem;
+  --margin-xxl: 3rem;
+  --margin-xxxl: 4rem;
+
+  /* PADDINGS */
+  --padding-xxs: 0.5rem;
+  --padding-xs: 0.75rem;
+  --padding-s: 1rem;
+  --padding-m: 1.5rem;
+  --padding-l: 2rem;
+  --padding-xl: 2.5rem;
+  --padding-xxl: 3rem;
+  --padding-xxxl: 4rem;
+
+  /* FONT FAMILIES */
+  --font-family-inter-light: 'Inter-Light', sans-serif;
+  --font-family-inter-regular: 'Inter-Regular', sans-serif;
+  --font-family-inter-bold: 'Inter-Bold', sans-serif;
+  --font-family-ubuntu-light: 'Ubuntu-Light', sans-serif;
+  --font-family-ubuntu-regular: 'Ubuntu-Regular', sans-serif;
+  --font-family-ubuntu-bold: 'Ubuntu-Bold', sans-serif;
+
+  /* FONT WEIGHTS */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+  /* FONT SIZES */
+  --font-size-xxs: 0.875rem;
+  --font-size-xs: 1rem;
+  --font-size-s: 1.25rem;
+  --font-size-m: 1.5rem;
+  --font-size-l: 1.75rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
+  --font-size-xxxl: 4rem;
+
+  /* BORDER RADIUS */
+  --border-none: 0px;
+  --border-xs: 20px;
+  --border-s: 40px;
+  --border-m: 60px;
+  --border-l: 100px;
+  --border-xl: 50%;
+}
