@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { RegisterStatus } from '../../features/registerForm/registerFormSlice';
 
 interface AuthStatusProps {
-  authStatus: RegisterStatus;
+  authStatus: 'idle' | 'success' | 'error';
 }
 
 export const AuthFormContainer = styled.form`
@@ -72,12 +71,12 @@ export const AuthStatusFeedback = styled.div<AuthStatusProps>`
   font-size: var(---font-size-s);
   color: ${(props) => {
     switch (props.authStatus) {
-      case 'idle':
-        return 'var(--color-secondary)';
       case 'success':
         return 'var(--color-success)';
-      default:
+      case 'error':
         return 'var(--color-danger)';
+      default:
+        return 'var(--color-secondary)';
     }
   }};
 `;

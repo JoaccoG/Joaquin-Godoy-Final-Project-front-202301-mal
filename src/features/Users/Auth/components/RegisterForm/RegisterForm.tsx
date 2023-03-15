@@ -1,42 +1,30 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Spinner from '../spinner/spinner';
-import { registerNewUser, selectRegisterForm } from './registerFormSlice';
-import {
-  AuthFormContainer,
-  AuthStatusFeedback,
-} from '../../shared/auth/authFormsStyle';
+import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
+import Spinner from '../../../../../shared/Spinner/Spinner';
+import { registerNewUser, selectAuthSlice } from '../../auth-slice';
+import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
-  const { status, registerStatus } = useAppSelector(selectRegisterForm);
+  const { status, authMsg, authStatus } = useAppSelector(selectAuthSlice);
 
   const formFeedback = () => {
-    switch (registerStatus) {
+    switch (authStatus) {
       case 'success':
         return (
           <AuthStatusFeedback authStatus="success">
             <span>You have successfully registered!</span>
           </AuthStatusFeedback>
         );
-      case 'error409':
-        return (
-          <AuthStatusFeedback authStatus="error409">
-            <span>That email is already registered.</span>
-          </AuthStatusFeedback>
-        );
       case 'error':
         return (
           <AuthStatusFeedback authStatus="error">
-            <span>
-              There was an error during the registration, please try again
-              later.
-            </span>
+            <span>{authMsg}</span>
           </AuthStatusFeedback>
         );
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            Welcome to PlayersNation! Let's begin the adventure.
+            <span>Welcome to PlayersNation! Let's begin the adventure.</span>
             <span>
               To be able to use the app, you need to create an account.
             </span>

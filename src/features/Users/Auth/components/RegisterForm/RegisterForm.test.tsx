@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from '../../app/store';
-import RegisterForm from './registerForm';
-import { server } from '../../mocks/server';
+import { store } from '../../../../../app/store';
+import RegisterForm from './RegisterForm';
+import { server } from '../../../../../mocks/server';
 import userEvent from '@testing-library/user-event';
 
 beforeAll(() => server.listen());
