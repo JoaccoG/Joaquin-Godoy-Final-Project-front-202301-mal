@@ -3,15 +3,36 @@ import { RootState } from '../../app/store';
 import { NewUser } from '../../models/user-model';
 import { registerUser } from './registerFormApi';
 
+export type RegisterStatus = 'idle' | 'success' | 'error' | 'error409';
+
 export interface RegisterFormState {
   status: 'idle' | 'loading' | 'failed';
-  registerStatus: 'idle' | 'success' | 'error';
+  registerStatus: RegisterStatus;
 }
 
 const initialState: RegisterFormState = {
   status: 'idle',
   registerStatus: 'idle',
 };
+
+export const registerNewUser = createAsyncThunk(
+  'registerForm/registerNewUser',
+  async (form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const newUser = Object.fromEntries(formData.entries());
+
+    const apiRes = await registerUser(newUser as NewUser);
+
+    switch (apiRes.status) {
+      case 201:
+        return 'success';
+      case 409:
+        return 'error409';
+      default:
+        throw new Error('Error registering new user.');
+    }
+  }
+);
 
 export const registerFormSlice = createSlice({
   name: 'registerForm',
@@ -24,7 +45,7 @@ export const registerFormSlice = createSlice({
       })
       .addCase(
         registerNewUser.fulfilled,
-        (state, action: PayloadAction<'idle' | 'success' | 'error'>) => {
+        (state, action: PayloadAction<RegisterStatus>) => {
           state.status = 'idle';
           state.registerStatus = action.payload;
         }
@@ -35,24 +56,6 @@ export const registerFormSlice = createSlice({
       });
   },
 });
-
-export const registerNewUser = createAsyncThunk(
-  'registerForm/registerNewUser',
-  async (form: HTMLFormElement) => {
-    if (form.password.value !== form.repeatPassword.value) {
-      return 'error';
-    }
-    const newUser: NewUser = {
-      email: form.email.value,
-      password: form.password.value,
-    };
-    const apiRes = await registerUser(newUser);
-    if (apiRes === 201) {
-      return 'success';
-    }
-    return 'error';
-  }
-);
 
 export const selectRegisterForm = (state: RootState) => state.registerForm;
 
