@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { NewUser } from '../../models/user-model';
+import { UserCredentials } from '../../models/user-model';
 import { registerUser } from './registerFormApi';
 
 export type RegisterStatus = 'idle' | 'success' | 'error' | 'error409';
 
-export interface RegisterFormState {
+interface RegisterFormState {
   status: 'idle' | 'loading' | 'failed';
   registerStatus: RegisterStatus;
 }
@@ -21,7 +21,7 @@ export const registerNewUser = createAsyncThunk(
     const formData = new FormData(form);
     const newUser = Object.fromEntries(formData.entries());
 
-    const apiRes = await registerUser(newUser as NewUser);
+    const apiRes = await registerUser(newUser as UserCredentials);
 
     switch (apiRes.status) {
       case 201:
