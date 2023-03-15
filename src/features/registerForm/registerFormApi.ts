@@ -12,5 +12,5 @@ export const registerUser = async (newUser: NewUser) => {
     }
   );
 
-  return await response.status;
+  return response;
 };
