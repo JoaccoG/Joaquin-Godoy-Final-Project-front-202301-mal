@@ -2,7 +2,9 @@
   /* COLORS */
   --color-primary: hsl(0, 0%, 100%);
   --color-secondary: hsl(231, 13%, 59%);
-  --color-tertiary: hsl(14, 98%, 65%);
+  --color-secondary-hover: hsl(231, 13%, 72%);
+  --color-tertiary: hsl(14, 98%, 60%);
+  --color-tertiary-hover: hsl(14, 98%, 68%);
   --color-success: hsl(120, 50%, 50%);
   --color-warning: hsl(60, 50%, 50%);
   --color-danger: hsl(0, 50%, 50%);
@@ -64,6 +66,7 @@
   /* FONT WEIGHTS */
   --font-weight-light: 300;
   --font-weight-regular: 400;
+  --font-weight-medium: 500;
   --font-weight-bold: 700;
 
   /* FONT SIZES */
@@ -83,4 +86,9 @@
   --border-m: 60px;
   --border-l: 100px;
   --border-xl: 50%;
+
+  /* TRANSITIONS */
+  --transition-short: all 100ms ease-in-out;
+  --transition-medium: all 200ms ease-in-out;
+  --transition-long: all 320ms ease-in-out;
 }

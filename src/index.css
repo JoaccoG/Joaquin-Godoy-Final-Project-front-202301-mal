@@ -1,23 +1,25 @@
 /* -------->>> Fonts <<<-------- */
-
 /* ----->> Inter <<----- */
 @font-face {
   font-family: 'Inter-Light';
   src: local('Inter'),
     url('/public/assets/fonts/Inter/Inter-Light.ttf') format('truetype');
   font-weight: 300;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Inter-Regular';
   src: local('Inter'),
     url('/public/assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Inter-Bold';
   src: local('Inter'),
     url('/public/assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-display: swap;
 }
 
 /* ----->> Ubuntu <<----- */
@@ -26,18 +28,21 @@
   src: local('Ubuntu'),
     url('/public/assets/fonts/Ubuntu/Ubuntu-Light.ttf') format('truetype');
   font-weight: 300;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Ubuntu-Regular';
   src: local('Ubuntu'),
     url('/public/assets/fonts/Ubuntu/Ubuntu-Regular.ttf') format('truetype');
   font-weight: 400;
+  font-display: swap;
 }
 @font-face {
   font-family: 'Ubuntu-Bold';
   src: local('Ubuntu'),
     url('/public/assets/fonts/Ubuntu/Ubuntu-Bold.ttf') format('truetype');
   font-weight: 700;
+  font-display: swap;
 }
 
 /* -------->>> Resets <<<-------- */
@@ -56,4 +61,18 @@ li {
 
 a {
   text-decoration: none;
+}
+
+/* -------->>> General <<<-------- */
+html {
+  font-family: var(--font-family-inter-regular);
+  font-weight: var(--font-weight-regular);
+}
+
+body {
+  color: var(--color-primary);
+  background: var(--bg-color-primary);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
