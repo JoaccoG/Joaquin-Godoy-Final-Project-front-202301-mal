@@ -18,9 +18,7 @@ jobs:
       - name: Coverage
         run: npm test -- --coverage --watchAll=false
         env:
-          PASSWORD_ENCRYPTION_ALGORITHM: ${{ secrets.PASSWORD_ENCRYPTION_ALGORITHM }}
-          PASSWORD_ENCRYPTION_KEY: ${{ secrets.PASSWORD_ENCRYPTION_KEY }}
-          JWT_SECRET: ${{ secrets.JWT_SECRET }}
+          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:

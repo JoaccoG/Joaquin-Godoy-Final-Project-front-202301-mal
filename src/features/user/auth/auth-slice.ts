@@ -93,7 +93,7 @@ export const authSlice = createSlice({
           state.status = 'idle';
           state.loginStatus = 'success';
           state.loginMsg = action.payload.msg;
-          sessionStorage.setItem('Bearer', action.payload.accessToken);
+          sessionStorage.setItem('accessToken', action.payload.accessToken);
         }
       )
       .addCase(loginNewUser.rejected, (state, action: any) => {
