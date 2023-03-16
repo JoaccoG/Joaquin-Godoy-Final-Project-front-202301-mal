@@ -7,43 +7,67 @@ import { AuthContainer } from './home-style';
 
 const Home = () => {
   const [authType, toggleAuthType] = useState('register');
+  const [activeButton, setactiveButton] = useState('register');
+
+  const handleButtonClick = (button: string) => {
+    toggleAuthType(button);
+    setactiveButton(button);
+  };
 
   return (
     <AuthContainer>
       <h1 className="auth__title">PlayersNation</h1>
       <article className="auth__info">
         <div className="auth-info__item">
-          <FontAwesomeIcon icon={solid('people-group')} />
+          <FontAwesomeIcon
+            className="auth-info-item__icon"
+            icon={solid('people-group')}
+          />
           <p>
-            Join a community of passionate people. Share your opinions, rate
-            your favourite games and learn from the experience of other users.
+            <span>Join a community of passionate people.</span>
+            Share your opinions, rate your favourite games and learn from the
+            experience of other users.
           </p>
         </div>
         <div className="auth-info__item">
-          <FontAwesomeIcon icon={solid('gamepad')} />
+          <FontAwesomeIcon
+            className="auth-info-item__icon"
+            icon={solid('gamepad')}
+          />
           <p>
-            Discover the latest games! Find out what to play by looking at the
-            rating and reviews of the video games you are interested in.
+            <span>Discover the latest games.</span>
+            Find out what to play by looking at the rating and reviews of the
+            video games you are interested in.
           </p>
         </div>
         <div className="auth-info__item">
-          <FontAwesomeIcon icon={solid('comments')} />
+          <FontAwesomeIcon
+            className="auth-info-item__icon"
+            icon={solid('comments')}
+          />
           <p>
-            Chat with your friends whenever you want! Meet people and organise
-            upcoming games with your friends to play synchronized.
+            <span>Chat with your friends whenever you want.</span>
+            Meet people and organise upcoming games with your friends to play
+            synchronized.
           </p>
         </div>
       </article>
       <div className="auth__buttons">
         <button
           data-testid="register-button"
-          onClick={() => toggleAuthType('register')}
+          onClick={() => handleButtonClick('register')}
+          className={
+            activeButton === 'register' ? 'auth-buttons__btn--active' : ''
+          }
         >
           Register
         </button>
         <button
           data-testid="login-button"
-          onClick={() => toggleAuthType('login')}
+          onClick={() => handleButtonClick('login')}
+          className={
+            activeButton === 'login' ? 'auth-buttons__btn--active' : ''
+          }
         >
           Login
         </button>
