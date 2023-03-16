@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Spinner/Spinner';
 import { registerNewUser, selectAuthSlice } from '../../auth-slice';
-import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
+import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();

@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Spinner/Spinner';
 import { loginNewUser, selectAuthSlice } from '../../auth-slice';
-import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
+import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();

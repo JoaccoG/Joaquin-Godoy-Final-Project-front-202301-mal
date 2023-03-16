@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import LoginForm from '../../features/users/auth/components/LoginForm/LoginForm';
-import RegisterForm from '../../features/users/auth/components/RegisterForm/RegisterForm';
-import { AuthContainer } from './home-style';
+import LoginForm from '../../features/user/auth/components/LoginForm/LoginForm';
+import RegisterForm from '../../features/user/auth/components/RegisterForm/RegisterForm';
+import { AuthContainer } from './home-styled';
 
 const Home = () => {
   const [authType, toggleAuthType] = useState('register');
