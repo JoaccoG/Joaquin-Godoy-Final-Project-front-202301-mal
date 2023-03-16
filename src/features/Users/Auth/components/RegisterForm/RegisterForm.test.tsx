@@ -45,7 +45,7 @@ describe('Given a register form component', () => {
     });
   });
 
-  test('When a user tries to register with an email that is already registered, then he should receive an error message as feedback', async () => {
+  test('When there is an error while registering, then the user should receive an error message as feedback', async () => {
     render(
       <Provider store={store}>
         <RegisterForm />
