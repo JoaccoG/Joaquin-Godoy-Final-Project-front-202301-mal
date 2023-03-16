@@ -1,9 +1,9 @@
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Spinner/Spinner';
-import { registerNewUser, selectAuthSlice } from '../../auth-slice';
+import { loginNewUser, selectAuthSlice } from '../../auth-slice';
 import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const dispatch = useAppDispatch();
   const { status, authMsg, authStatus } = useAppSelector(selectAuthSlice);
 
@@ -12,7 +12,8 @@ const RegisterForm = () => {
       case 'success':
         return (
           <AuthStatusFeedback authStatus="success">
-            <span>You have successfully registered!</span>
+            <span>Successfully logged in! You will now be redirected...</span>
+            <Spinner color="tertiary" size={75} />
           </AuthStatusFeedback>
         );
       case 'error':
@@ -25,9 +26,7 @@ const RegisterForm = () => {
         return (
           <AuthStatusFeedback authStatus="idle">
             <span>Welcome to PlayersNation! Let's begin the adventure.</span>
-            <span>
-              To be able to use the app, you need to create an account.
-            </span>
+            <span>To be able to use the app, you need to log in.</span>
           </AuthStatusFeedback>
         );
     }
@@ -39,7 +38,7 @@ const RegisterForm = () => {
       <AuthFormContainer
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(registerNewUser(e.currentTarget));
+          dispatch(loginNewUser(e.currentTarget));
         }}
       >
         {status === 'loading' ? (
@@ -64,7 +63,7 @@ const RegisterForm = () => {
               placeholder="Password"
             />
             <button type="submit" className="submit-btn">
-              Sign Up
+              Sign In
             </button>
           </>
         )}
@@ -73,4 +72,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;

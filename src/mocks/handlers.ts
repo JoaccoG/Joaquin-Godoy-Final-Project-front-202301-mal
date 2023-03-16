@@ -14,6 +14,22 @@ export const handlers = [
       );
     }
 
-    return res(ctx.status(409), ctx.json({ msg: 'Error while registering' }));
+    return res(ctx.status(500), ctx.json({ msg: 'Error while registering' }));
+  }),
+
+  rest.post(`${API_URL}/auth/login`, async (req, res, ctx) => {
+    const request = await req.json();
+    const { email } = request;
+
+    if (email === 'email@test.com') {
+      return res(
+        ctx.status(201),
+        ctx.json({
+          msg: 'Successfully logged in! You will now be redirected...',
+        })
+      );
+    }
+
+    return res(ctx.status(500), ctx.json({ msg: 'Error while logging in' }));
   }),
 ];
