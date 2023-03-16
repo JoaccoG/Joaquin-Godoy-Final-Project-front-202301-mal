@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { HeaderButton, HeaderContainer } from './header-styled';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,58 +31,58 @@ const Header = () => {
                 className="link-item__icon"
                 icon={solid('house')}
               />
-              <a href="#" className="active">
+              <Link className="active" to={'./'}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('user')}
               />
-              <a href="#">Profile</a>
+              <Link to={'./'}>Profile</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('gamepad')}
               />
-              <a href="#">Games</a>
+              <Link to={'./'}>Games</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('chart-simple')}
               />
-              <a href="#">Statistics</a>
+              <Link to={'./'}>Statistics</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('bell')}
               />
-              <a href="#">Notifications</a>
+              <Link to={'./'}>Notifications</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('comments')}
               />
-              <a href="#">Messages</a>
+              <Link to={'./'}>Messages</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('circle-info')}
               />
-              <a href="#">Contact</a>
+              <Link to={'./'}>Contact</Link>
             </li>
             <li className="links-list__link-item">
               <FontAwesomeIcon
                 className="link-item__icon"
                 icon={solid('right-from-bracket')}
               />
-              <a href="#">Log Out</a>
+              <Link to={'./'}>Log out</Link>
             </li>
           </ul>
         </nav>
