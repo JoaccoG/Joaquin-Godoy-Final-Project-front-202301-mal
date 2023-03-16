@@ -12,9 +12,9 @@ export const AuthFormContainer = styled.form`
   justify-content: center;
   gap: var(--margin-l);
   input {
-    min-width: 200px;
+    min-width: 250px;
     width: 100%;
-    max-width: 500px;
+    max-width: 650px;
     font-size: var(--font-size-s);
     font-family: var(--font-family-inter-bold);
     font-weight: var(--font-weight-l);
@@ -55,6 +55,19 @@ export const AuthFormContainer = styled.form`
       transform: scale(1.05);
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    width: 80%;
+    input {
+      font-size: var(--font-size-m);
+      padding: var(--padding-m) var(--padding-l);
+    }
+    .submit-btn {
+      width: 350px;
+      font-size: var(--font-size-l);
+      padding: var(--padding-m) var(--padding-l);
+    }
+  }
 `;
 
 export const AuthStatusFeedback = styled.div<AuthStatusProps>`
@@ -78,4 +91,8 @@ export const AuthStatusFeedback = styled.div<AuthStatusProps>`
         return 'var(--color-secondary)';
     }
   }};
+
+  @media screen and (min-width: 1024px) {
+    font-size: var(--font-size-m);
+  }
 `;

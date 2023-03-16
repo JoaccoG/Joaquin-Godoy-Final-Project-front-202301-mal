@@ -79,7 +79,7 @@ export const AuthContainer = styled.section`
     .auth__buttons {
       width: 60%;
       button {
-        font-size: var(--font-size-xxxl);
+        font-size: var(--font-size-xxl);
       }
     }
   }
