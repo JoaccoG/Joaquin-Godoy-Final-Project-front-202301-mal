@@ -37,7 +37,6 @@ const RegisterForm = () => {
     <>
       {formFeedback()}
       <AuthFormContainer
-        data-testid="register-form"
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(registerNewUser(e.currentTarget));
@@ -51,7 +50,6 @@ const RegisterForm = () => {
               type="email"
               id="email"
               name="email"
-              data-testid="email"
               required
               autoComplete="off"
               placeholder="Email"
@@ -60,17 +58,12 @@ const RegisterForm = () => {
               type="password"
               id="password"
               name="password"
-              data-testid="password"
               required
               minLength={6}
               maxLength={25}
               placeholder="Password"
             />
-            <button
-              type="submit"
-              data-testid="submit-btn"
-              className="submit-btn"
-            >
+            <button type="submit" className="submit-btn">
               Sign Up
             </button>
           </>
