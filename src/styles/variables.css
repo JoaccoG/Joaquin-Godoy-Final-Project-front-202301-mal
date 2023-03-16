@@ -70,14 +70,16 @@
   --font-weight-bold: 700;
 
   /* FONT SIZES */
-  --font-size-xxs: 0.875rem;
-  --font-size-xs: 1rem;
+  --font-size-xxxs: 0.875rem;
+  --font-size-xxs: 1rem;
+  --font-size-xs: 1.125rem;
   --font-size-s: 1.25rem;
   --font-size-m: 1.5rem;
   --font-size-l: 1.75rem;
   --font-size-xl: 2rem;
-  --font-size-xxl: 3rem;
-  --font-size-xxxl: 4rem;
+  --font-size-xxl: 2.5rem;
+  --font-size-xxxl: 3rem;
+  --font-size-xxxxl: 4rem;
 
   /* BORDER RADIUS */
   --border-none: 0px;
