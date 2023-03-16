@@ -35,6 +35,7 @@ const RegisterForm = () => {
     <>
       {formFeedback()}
       <AuthFormContainer
+        data-testid="register-form"
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(registerNewUser(e.currentTarget));

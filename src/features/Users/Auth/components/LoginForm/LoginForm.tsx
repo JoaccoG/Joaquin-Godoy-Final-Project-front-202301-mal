@@ -35,6 +35,7 @@ const LoginForm = () => {
     <>
       {formFeedback()}
       <AuthFormContainer
+        data-testid="login-form"
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(loginNewUser(e.currentTarget));
