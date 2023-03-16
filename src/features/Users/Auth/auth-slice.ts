@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../app/store';
-import { User } from '../../../models/user-model';
 import { loginUser, registerUser } from './auth-api';
+import { User } from '../../../models/user-model';
 
 export type UserCredentials = Pick<User, 'email' | 'password'>;
 
