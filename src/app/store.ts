@@ -1,9 +1,9 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import registerFormReducer from '../features/registerForm/registerFormSlice';
+import authReducer from '../features/Users/Auth/auth-slice';
 
 export const store = configureStore({
   reducer: {
-    registerForm: registerFormReducer,
+    auth: authReducer,
   },
 });
 

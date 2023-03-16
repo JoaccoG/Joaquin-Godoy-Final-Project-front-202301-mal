@@ -1,43 +1,34 @@
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import Spinner from '../spinner/spinner';
-import { registerNewUser, selectRegisterForm } from './registerFormSlice';
-import { RegisterFormContainer, RegisterFormStatus } from './registerFormStyle';
+import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
+import Spinner from '../../../../../shared/Spinner/Spinner';
+import { registerNewUser, selectAuthSlice } from '../../auth-slice';
+import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
-  const { status, registerStatus } = useAppSelector(selectRegisterForm);
+  const { status, authMsg, authStatus } = useAppSelector(selectAuthSlice);
 
   const formFeedback = () => {
-    switch (registerStatus) {
+    switch (authStatus) {
       case 'success':
         return (
-          <RegisterFormStatus registerStatus="success">
+          <AuthStatusFeedback authStatus="success">
             <span>You have successfully registered!</span>
-          </RegisterFormStatus>
-        );
-      case 'error409':
-        return (
-          <RegisterFormStatus registerStatus="error409">
-            <span>That email is already registered.</span>
-          </RegisterFormStatus>
+          </AuthStatusFeedback>
         );
       case 'error':
         return (
-          <RegisterFormStatus registerStatus="error">
-            <span>
-              There was an error during the registration, please try again
-              later.
-            </span>
-          </RegisterFormStatus>
+          <AuthStatusFeedback authStatus="error">
+            <span>{authMsg}</span>
+          </AuthStatusFeedback>
         );
       default:
         return (
-          <RegisterFormStatus registerStatus="idle">
-            Welcome to PlayersNation! Let's begin the adventure.
+          <AuthStatusFeedback authStatus="idle">
+            <span>Welcome to PlayersNation! Let's begin the adventure.</span>
             <span>
               To be able to use the app, you need to create an account.
             </span>
-          </RegisterFormStatus>
+          </AuthStatusFeedback>
         );
     }
   };
@@ -45,7 +36,7 @@ const RegisterForm = () => {
   return (
     <>
       {formFeedback()}
-      <RegisterFormContainer
+      <AuthFormContainer
         data-testid="register-form"
         onSubmit={(e) => {
           e.preventDefault();
@@ -84,7 +75,7 @@ const RegisterForm = () => {
             </button>
           </>
         )}
-      </RegisterFormContainer>
+      </AuthFormContainer>
     </>
   );
 };

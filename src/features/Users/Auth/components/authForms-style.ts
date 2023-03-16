@@ -1,11 +1,10 @@
 import styled from 'styled-components';
-import { RegisterStatus } from './registerFormSlice';
 
-interface RegisterStatusProps {
-  registerStatus: RegisterStatus;
+interface AuthStatusProps {
+  authStatus: 'idle' | 'success' | 'error';
 }
 
-export const RegisterFormContainer = styled.form`
+export const AuthFormContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,9 +38,6 @@ export const RegisterFormContainer = styled.form`
     &:required:valid {
       outline: var(--color-success) 1px solid;
     }
-    &:required:invalid::-webkit-validation-bubble-message {
-      display: none;
-    }
   }
   .submit-btn {
     width: 200px;
@@ -62,7 +58,7 @@ export const RegisterFormContainer = styled.form`
   }
 `;
 
-export const RegisterFormStatus = styled.div<RegisterStatusProps>`
+export const AuthStatusFeedback = styled.div<AuthStatusProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -74,12 +70,10 @@ export const RegisterFormStatus = styled.div<RegisterStatusProps>`
   color: var(--color-secondary);
   font-size: var(---font-size-s);
   color: ${(props) => {
-    switch (props.registerStatus) {
+    switch (props.authStatus) {
       case 'success':
         return 'var(--color-success)';
       case 'error':
-        return 'var(--color-danger)';
-      case 'error409':
         return 'var(--color-danger)';
       default:
         return 'var(--color-secondary)';

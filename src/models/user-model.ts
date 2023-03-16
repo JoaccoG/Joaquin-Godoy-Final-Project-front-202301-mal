@@ -9,5 +9,3 @@ export interface User {
   followers: User[];
   following: User[];
 }
-
-export type NewUser = Pick<User, 'email' | 'password'>;

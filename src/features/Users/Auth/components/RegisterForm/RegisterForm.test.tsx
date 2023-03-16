@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { store } from '../../app/store';
-import RegisterForm from './registerForm';
-import { server } from '../../mocks/server';
+import { store } from '../../../../../app/store';
+import RegisterForm from './RegisterForm';
+import { server } from '../../../../../mocks/server';
 import userEvent from '@testing-library/user-event';
 
 beforeAll(() => server.listen());
@@ -54,55 +54,13 @@ describe('Given a register form component', () => {
 
     await userEvent.type(
       screen.getByPlaceholderText('Email'),
-      'alreadyRegisteredEmail@test.com'
+      'email2@test.com'
     );
     await userEvent.type(screen.getByPlaceholderText('Password'), 'password');
     userEvent.click(screen.getByRole('button'));
 
     await waitFor(() => {
-      expect(
-        screen.getByText('That email is already registered.')
-      ).toBeInTheDocument();
-    });
-  });
-
-  test('When a user tries to register with invalid email or password, then he should receive an error message as feedback', async () => {
-    render(
-      <Provider store={store}>
-        <RegisterForm />
-      </Provider>
-    );
-
-    await userEvent.type(screen.getByPlaceholderText('Email'), 'invalidEmail');
-    await userEvent.type(screen.getByPlaceholderText('Password'), 'password');
-    userEvent.click(screen.getByRole('button'));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'There was an error during the registration, please try again later.'
-        )
-      ).toBeInTheDocument();
-    });
-  });
-
-  test('When a user tries to register and the promise is rejected, then he should receive an error message as feedback', async () => {
-    render(
-      <Provider store={store}>
-        <RegisterForm />
-      </Provider>
-    );
-
-    await userEvent.type(screen.getByPlaceholderText('Email'), 'email');
-    await userEvent.type(screen.getByPlaceholderText('Password'), 'password');
-    userEvent.click(screen.getByRole('button'));
-
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'There was an error during the registration, please try again later.'
-        )
-      ).toBeInTheDocument();
+      expect(screen.getByText('Error while registering')).toBeInTheDocument();
     });
   });
 });

@@ -8,13 +8,12 @@ export const handlers = [
     const { email } = request;
 
     if (email === 'email@test.com') {
-      return res(ctx.status(201));
+      return res(
+        ctx.status(201),
+        ctx.json({ msg: 'You have successfully registered!' })
+      );
     }
 
-    if (email === 'alreadyRegisteredEmail@test.com') {
-      return res(ctx.status(409));
-    }
-
-    return res(ctx.status(400));
+    return res(ctx.status(409), ctx.json({ msg: 'Error while registering' }));
   }),
 ];

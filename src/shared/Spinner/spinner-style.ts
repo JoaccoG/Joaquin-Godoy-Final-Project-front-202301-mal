@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SpinnerProps } from './spinner';
+import { SpinnerProps } from './Spinner';
 
 export const SpinnerContainer = styled.div<SpinnerProps>`
   width: ${({ size }) => size}px;

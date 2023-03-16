@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { SpinnerContainer } from './spinnerStyle';
+import { SpinnerContainer } from './spinner-style';
 
 export interface SpinnerProps {
   size: number;
