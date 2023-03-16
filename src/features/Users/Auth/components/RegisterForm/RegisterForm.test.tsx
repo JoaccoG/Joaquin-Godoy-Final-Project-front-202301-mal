@@ -18,7 +18,7 @@ describe('Given a register form component', () => {
     );
 
     expect(
-      await screen.findByText('Create an account and start posting!')
+      await screen.findByText('Create an account and start posting.')
     ).toBeInTheDocument();
   });
 
@@ -38,7 +38,9 @@ describe('Given a register form component', () => {
 
     await waitFor(() => {
       expect(
-        screen.getByText('You have successfully registered!')
+        screen.getByText(
+          'You have successfully registered! You may now log in...'
+        )
       ).toBeInTheDocument();
     });
   });

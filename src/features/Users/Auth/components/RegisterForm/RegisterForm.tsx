@@ -13,7 +13,7 @@ const RegisterForm = () => {
       case 'success':
         return (
           <AuthStatusFeedback authStatus="success">
-            <span>You have successfully registered!</span>
+            <span>You have successfully registered! You may now log in...</span>
           </AuthStatusFeedback>
         );
       case 'error':
@@ -25,7 +25,7 @@ const RegisterForm = () => {
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            <span>Create an account and start posting!</span>
+            <span>Create an account and start posting.</span>
           </AuthStatusFeedback>
         );
     }
@@ -33,7 +33,6 @@ const RegisterForm = () => {
 
   return (
     <>
-      {formFeedback()}
       <AuthFormContainer
         data-testid="register-form"
         onSubmit={(e) => {
@@ -45,6 +44,7 @@ const RegisterForm = () => {
           <Spinner color="tertiary" size={150} />
         ) : (
           <>
+            {formFeedback()}
             <input
               type="email"
               id="email"

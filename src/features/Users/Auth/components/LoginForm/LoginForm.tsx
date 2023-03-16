@@ -25,7 +25,7 @@ const LoginForm = () => {
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            <span>Sign in to use the app.</span>
+            <span>Welcome back! Sign in to use the app.</span>
           </AuthStatusFeedback>
         );
     }
@@ -33,7 +33,6 @@ const LoginForm = () => {
 
   return (
     <>
-      {formFeedback()}
       <AuthFormContainer
         data-testid="login-form"
         onSubmit={(e) => {
@@ -45,6 +44,7 @@ const LoginForm = () => {
           <Spinner color="tertiary" size={150} />
         ) : (
           <>
+            {formFeedback()}
             <input
               type="email"
               id="email"

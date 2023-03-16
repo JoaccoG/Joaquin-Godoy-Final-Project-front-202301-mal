@@ -11,7 +11,6 @@ export const AuthFormContainer = styled.form`
   align-items: center;
   justify-content: center;
   gap: var(--margin-l);
-  padding: var(--padding-s);
   input {
     min-width: 200px;
     width: 100%;
@@ -68,7 +67,7 @@ export const AuthStatusFeedback = styled.div<AuthStatusProps>`
   padding: var(--padding-s);
   text-align: center;
   color: var(--color-secondary);
-  font-size: var(---font-size-s);
+  font-size: var(--font-size-s);
   color: ${(props) => {
     switch (props.authStatus) {
       case 'success':
