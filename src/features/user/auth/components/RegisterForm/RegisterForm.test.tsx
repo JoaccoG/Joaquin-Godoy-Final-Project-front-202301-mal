@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../../../../../app/store';
-import LoginForm from './LoginForm';
+import RegisterForm from './RegisterForm';
 import { server } from '../../../../../mocks/server';
 import userEvent from '@testing-library/user-event';
 
@@ -9,23 +9,23 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
-describe('Given a login form component', () => {
+describe('Given a register form component', () => {
   test('When the component loads, then it should be a welcome message', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <RegisterForm />
       </Provider>
     );
 
     expect(
-      await screen.findByText('To be able to use the app, you need to log in.')
+      await screen.findByText('Create an account and start posting.')
     ).toBeInTheDocument();
   });
 
-  test('When a user tries to login with a valid email and password, then he should receive his access token', async () => {
+  test('When a user tries to register with a valid email and password, then he should be registered', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <RegisterForm />
       </Provider>
     );
 
@@ -39,16 +39,16 @@ describe('Given a login form component', () => {
     await waitFor(() => {
       expect(
         screen.getByText(
-          'Successfully logged in! You will now be redirected...'
+          'You have successfully registered! You may now log in...'
         )
       ).toBeInTheDocument();
     });
   });
 
-  test('When there is an error while logging in, then the user should receive an error message as feedback', async () => {
+  test('When there is an error while registering, then the user should receive an error message as feedback', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <RegisterForm />
       </Provider>
     );
 
@@ -60,7 +60,7 @@ describe('Given a login form component', () => {
     userEvent.click(screen.getByRole('button'));
 
     await waitFor(() => {
-      expect(screen.getByText('Error while logging in')).toBeInTheDocument();
+      expect(screen.getByText('Error while registering')).toBeInTheDocument();
     });
   });
 });

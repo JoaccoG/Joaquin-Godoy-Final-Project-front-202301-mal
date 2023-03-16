@@ -1,8 +1,11 @@
+import { RouterProvider } from 'react-router-dom';
+import router from './router/app-router';
+
 const App = () => {
   return (
-    <main className="App">
-      <h1>PlayersNation</h1>
-    </main>
+    <>
+      <RouterProvider router={router} />
+    </>
   );
 };
 
