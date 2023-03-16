@@ -18,7 +18,7 @@ describe('Given a login form component', () => {
     );
 
     expect(
-      await screen.findByText('To be able to use the app, you need to log in.')
+      await screen.findByText('Sign in to use the app.')
     ).toBeInTheDocument();
   });
 
