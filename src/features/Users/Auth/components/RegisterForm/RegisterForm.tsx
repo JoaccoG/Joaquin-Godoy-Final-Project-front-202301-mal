@@ -5,10 +5,11 @@ import { AuthFormContainer, AuthStatusFeedback } from '../authForms-style';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
-  const { status, authMsg, authStatus } = useAppSelector(selectAuthSlice);
+  const { status, registerMsg, registerStatus } =
+    useAppSelector(selectAuthSlice);
 
   const formFeedback = () => {
-    switch (authStatus) {
+    switch (registerStatus) {
       case 'success':
         return (
           <AuthStatusFeedback authStatus="success">
@@ -18,16 +19,13 @@ const RegisterForm = () => {
       case 'error':
         return (
           <AuthStatusFeedback authStatus="error">
-            <span>{authMsg}</span>
+            <span>{registerMsg}</span>
           </AuthStatusFeedback>
         );
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            <span>Welcome to PlayersNation! Let's begin the adventure.</span>
-            <span>
-              To be able to use the app, you need to create an account.
-            </span>
+            <span>Create an account and start posting!</span>
           </AuthStatusFeedback>
         );
     }

@@ -10,16 +10,22 @@ export interface AuthResponse {
   accessToken: string;
 }
 
+export type AuthStatus = 'idle' | 'success' | 'error';
+
 interface AuthState {
   status: 'idle' | 'loading' | 'failed';
-  authStatus: 'idle' | 'success' | 'error';
-  authMsg: string;
+  registerStatus: AuthStatus;
+  loginStatus: AuthStatus;
+  registerMsg: string;
+  loginMsg: string;
 }
 
 const initialState: AuthState = {
   status: 'idle',
-  authStatus: 'idle',
-  authMsg: '',
+  registerStatus: 'idle',
+  loginStatus: 'idle',
+  registerMsg: '',
+  loginMsg: '',
 };
 
 export const registerNewUser = createAsyncThunk(
@@ -69,14 +75,14 @@ export const authSlice = createSlice({
         registerNewUser.fulfilled,
         (state, action: PayloadAction<AuthResponse>) => {
           state.status = 'idle';
-          state.authStatus = 'success';
-          state.authMsg = action.payload.msg;
+          state.registerStatus = 'success';
+          state.registerMsg = action.payload.msg;
         }
       )
       .addCase(registerNewUser.rejected, (state, action: any) => {
         state.status = 'failed';
-        state.authMsg = action.error.message;
-        state.authStatus = 'error';
+        state.registerStatus = 'error';
+        state.registerMsg = action.error.message;
       })
       .addCase(loginNewUser.pending, (state) => {
         state.status = 'loading';
@@ -85,15 +91,15 @@ export const authSlice = createSlice({
         loginNewUser.fulfilled,
         (state, action: PayloadAction<AuthResponse>) => {
           state.status = 'idle';
-          state.authStatus = 'success';
-          state.authMsg = action.payload.msg;
+          state.loginStatus = 'success';
+          state.loginMsg = action.payload.msg;
           sessionStorage.setItem('Bearer', action.payload.accessToken);
         }
       )
       .addCase(loginNewUser.rejected, (state, action: any) => {
         state.status = 'failed';
-        state.authMsg = action.error.message;
-        state.authStatus = 'error';
+        state.loginStatus = 'error';
+        state.loginMsg = action.error.message;
       });
   },
 });
