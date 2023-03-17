@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import LoginForm from '../../features/user/auth/components/LoginForm/LoginForm';
 import RegisterForm from '../../features/user/auth/components/RegisterForm/RegisterForm';
-import { AuthContainer } from './home-styled';
+import { AuthContainer } from './auth-styled';
 
-const Home = () => {
+const Auth = () => {
   const [authType, toggleAuthType] = useState('register');
   const [activeButton, setactiveButton] = useState('register');
 
@@ -77,4 +77,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Auth;
