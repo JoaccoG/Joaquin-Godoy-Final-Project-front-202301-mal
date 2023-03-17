@@ -2,13 +2,13 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
 import { store } from '../../app/store';
-import Home from './Home';
+import Auth from './Auth';
 
-describe('Given a home authentication page', () => {
+describe('Given an authentication page', () => {
   test('When the page is rendered, then there should be a title', () => {
     render(
       <Provider store={store}>
-        <Home />
+        <Auth />
       </Provider>
     );
 
@@ -19,7 +19,7 @@ describe('Given a home authentication page', () => {
   test('When the button to switch auth type is clicked, then the form should change', async () => {
     render(
       <Provider store={store}>
-        <Home />
+        <Auth />
       </Provider>
     );
 

@@ -114,6 +114,7 @@ export const HeaderContainer = styled.header<HeaderProps>`
     width: 300px;
     left: 0;
     background-color: var(--bg-color-secondary);
+    box-shadow: 4px 0 16px 8px rgba(0, 0, 0, 0.5);
     padding: var(--padding-s);
     .header__title {
       display: block;
