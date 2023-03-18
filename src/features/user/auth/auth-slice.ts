@@ -76,6 +76,7 @@ export const authSlice = createSlice({
         state.registerStatus = 'error';
         state.registerMsg = action.error.message;
       })
+
       .addCase(loginNewUser.pending, (state) => {
         state.status = 'loading';
       })
