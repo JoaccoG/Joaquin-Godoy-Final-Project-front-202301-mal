@@ -1,4 +1,5 @@
 import { Post } from './post-model';
+import { Game } from './game-model';
 
 export interface User {
   email: string;
@@ -11,4 +12,7 @@ export interface User {
   posts: Post[];
   followers: User[];
   following: User[];
+  favGames: Game[];
 }
+
+export type UserCredentials = Pick<User, 'email' | 'password'>;
