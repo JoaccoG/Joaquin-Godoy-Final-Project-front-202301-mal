@@ -14,8 +14,9 @@ const Header = () => {
   return (
     <>
       <HeaderButton
-        className={`${isOpen ? 'active' : ''}`}
+        className={isOpen ? 'active' : ''}
         type="button"
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
         onClick={() => handleMenuBtnClick()}
       >
         <span className="hamburger-btn__line" />
