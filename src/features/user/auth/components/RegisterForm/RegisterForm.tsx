@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import Spinner from '../../../../../shared/Spinner/Spinner';
+import Spinner from '../../../../../shared/Loading/Loading';
 import { registerNewUser, selectAuthSlice } from '../../auth-slice';
 import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
 
