@@ -18,12 +18,15 @@ export const AuthFormContainer = styled.form`
     font-size: var(--font-size-s);
     font-family: var(--font-family-inter-bold);
     font-weight: var(--font-weight-l);
-    color: var(--color-secondary);
     background-color: var(--bg-color-tertiary);
-    padding: var(--padding-s) var(--padding-m);
+    box-shadow: 0px 0px 16px 4px var(--bg-solid-opacity-secondary);
+    padding: var(--padding-m) var(--padding-l);
     border: none;
     border-radius: var(--border-m);
     transition: var(--transition-short);
+    &::placeholder {
+      color: var(--color-secondary);
+    }
     &:focus {
       outline: var(--color-success) 1px solid;
       color: var(--color-primary);
@@ -44,8 +47,8 @@ export const AuthFormContainer = styled.form`
     font-family: var(--font-family-inter-bold);
     font-weight: var(--font-weight-l);
     color: var(--color-primary);
-    background-color: var(--color-tertiary);
-    padding: var(--padding-xs) var(--padding-m);
+    background-color: var(--color-tertiary-darker);
+    padding: var(--padding-s) var(--padding-m);
     border: none;
     border-radius: var(--border-m);
     transition: var(--transition-short);
