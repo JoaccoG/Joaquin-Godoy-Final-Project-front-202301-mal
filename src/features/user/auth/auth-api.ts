@@ -1,4 +1,4 @@
-import { UserCredentials } from './auth-slice';
+import { UserCredentials } from '../../../models/user-model';
 
 export const registerUser = async (newUser: UserCredentials) => {
   const response = await fetch(

@@ -1,21 +1,13 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../app/store';
 import { loginUser, registerUser } from './auth-api';
-import { User } from '../../../models/user-model';
-
-export type UserCredentials = Pick<User, 'email' | 'password'>;
-
-export interface AuthResponse {
-  msg: string;
-  accessToken: string;
-}
-
-export type AuthStatus = 'idle' | 'success' | 'error';
+import { UserCredentials } from '../../../models/user-model';
+import { RequestResponse, RequestStatus, Status } from '../../../models/models';
 
 interface AuthState {
-  status: 'idle' | 'loading' | 'failed';
-  registerStatus: AuthStatus;
-  loginStatus: AuthStatus;
+  status: Status;
+  registerStatus: RequestStatus;
+  loginStatus: RequestStatus;
   registerMsg: string;
   loginMsg: string;
 }
@@ -35,7 +27,7 @@ export const registerNewUser = createAsyncThunk(
     const newUser = Object.fromEntries(formData.entries());
 
     const apiRes = await registerUser(newUser as UserCredentials);
-    const data: AuthResponse = await apiRes.json();
+    const data: RequestResponse = await apiRes.json();
 
     if (!apiRes.ok) {
       throw new Error(data.msg);
@@ -52,7 +44,7 @@ export const loginNewUser = createAsyncThunk(
     const newUser = Object.fromEntries(formData.entries());
 
     const apiRes = await loginUser(newUser as UserCredentials);
-    const data: AuthResponse = await apiRes.json();
+    const data: RequestResponse = await apiRes.json();
 
     if (!apiRes.ok) {
       throw new Error(data.msg);
@@ -73,7 +65,7 @@ export const authSlice = createSlice({
       })
       .addCase(
         registerNewUser.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
+        (state, action: PayloadAction<RequestResponse>) => {
           state.status = 'idle';
           state.registerStatus = 'success';
           state.registerMsg = action.payload.msg;
@@ -89,7 +81,7 @@ export const authSlice = createSlice({
       })
       .addCase(
         loginNewUser.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
+        (state, action: PayloadAction<RequestResponse>) => {
           state.status = 'idle';
           state.loginStatus = 'success';
           state.loginMsg = action.payload.msg;
