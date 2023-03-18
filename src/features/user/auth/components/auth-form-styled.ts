@@ -18,6 +18,7 @@ export const AuthFormContainer = styled.form`
     font-size: var(--font-size-s);
     font-family: var(--font-family-inter-bold);
     font-weight: var(--font-weight-l);
+    color: var(--color-primary);
     background-color: var(--bg-color-tertiary);
     box-shadow: 0px 0px 16px 4px var(--bg-solid-opacity-secondary);
     padding: var(--padding-m) var(--padding-l);
