@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Status } from '../../models/models';
-import { Post, PostForm, PostResponse } from '../../models/post-model';
+import { Post, PostResponse } from '../../models/post-model';
 import { createPost, getPosts } from './posts-api';
 
 interface PostsState {
@@ -29,11 +29,9 @@ export const getAllPosts = createAsyncThunk(
 
 export const createNewPost = createAsyncThunk(
   'postsSlice/createNewPost',
-  async (post: HTMLFormElement) => {
-    const formData = new FormData(post);
-    const newPost = Object.fromEntries(formData.entries());
-
-    const apiRes = await createPost(newPost as unknown as PostForm);
+  async (form: HTMLFormElement) => {
+    const formData = new FormData(form);
+    const apiRes = await createPost(formData);
     const data: PostResponse = await apiRes.json();
 
     if (!apiRes.ok) {
