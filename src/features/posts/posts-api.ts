@@ -13,13 +13,16 @@ export const getPosts = async () => {
 };
 
 export const createPost = async (formData: FormData) => {
-  const response = await fetch(`http://localhost:4000/api/v1/posts`, {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-    },
-    body: formData,
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+      },
+      body: formData,
+    }
+  );
 
   return response;
 };
