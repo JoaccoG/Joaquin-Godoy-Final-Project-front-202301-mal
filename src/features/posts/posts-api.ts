@@ -1,24 +1,24 @@
-import { PostForm } from '../../models/post-model';
-
 export const getPosts = async () => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
-    },
-  });
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+    {
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 
   return response;
 };
 
-export const createPost = async (post: PostForm) => {
-  const response = await fetch(`${process.env.REACT_APP_API_URL}/posts`, {
+export const createPost = async (formData: FormData) => {
+  const response = await fetch(`http://localhost:4000/api/v1/posts`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
     },
-    body: JSON.stringify(post),
+    body: formData,
   });
 
   return response;
