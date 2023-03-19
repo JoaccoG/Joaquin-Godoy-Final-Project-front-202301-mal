@@ -12,7 +12,7 @@ export const TitleStyled = styled.h1<TitleStyledProps>`
   font-weight: var(--font-weight-l);
   color: var(--color-${({ color }) => color});
   text-align: center;
-  margin: 0;
+  margin: var(--margin-m) 0;
   padding: 0;
 
   @media screen and (min-width: 1024px) {
