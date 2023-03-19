@@ -1,13 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from '../../app/store';
 import Home from './Home';
 
 describe('Given an error page', () => {
   test('When the page renders, then it should render its child elements', () => {
     render(
-      <MemoryRouter>
+      <Provider store={store}>
         <Home />
-      </MemoryRouter>
+      </Provider>
     );
     expect(screen.getByRole('heading')).toBeInTheDocument();
     expect(screen.getByRole('article')).toBeInTheDocument();
