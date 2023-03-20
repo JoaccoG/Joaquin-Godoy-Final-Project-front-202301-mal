@@ -28,7 +28,7 @@ describe('Given a post card component', () => {
 
     const imgElements = screen.getAllByRole('img');
 
-    expect(imgElements).toHaveLength(3);
-    expect(imgElements[2]).toBeInTheDocument();
+    expect(imgElements).toHaveLength(2);
+    expect(imgElements[0]).toBeInTheDocument();
   });
 });
