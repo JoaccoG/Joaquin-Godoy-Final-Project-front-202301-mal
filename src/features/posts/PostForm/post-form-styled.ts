@@ -4,6 +4,10 @@ interface TextareaProps {
   textareaHeight: number;
 }
 
+interface PostStatusProps {
+  postStatus: 'idle' | 'success' | 'error';
+}
+
 export const PostFormContainer = styled.form<TextareaProps>`
   width: 100%;
   display: flex;
@@ -153,5 +157,26 @@ export const PostFormContainer = styled.form<TextareaProps>`
 
   @media screen and (min-width: 1440px) {
     width: 65%;
+  }
+`;
+
+export const PostFormFeedback = styled.span<PostStatusProps>`
+  display: block;
+  width: 100%;
+  font-size: var(--font-size-xxs);
+  margin: 0 0 var(--margin-xs) var(--margin-xs);
+  color: ${(props) => {
+    switch (props.postStatus) {
+      case 'success':
+        return 'var(--color-success)';
+      case 'error':
+        return 'var(--color-danger)';
+      default:
+        return 'var(--color-primary)';
+    }
+  }};
+
+  @media screen and (min-width: 1024px) {
+    font-size: var(--font-size-s);
   }
 `;
