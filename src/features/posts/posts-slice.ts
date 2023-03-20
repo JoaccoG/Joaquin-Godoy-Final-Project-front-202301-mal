@@ -60,7 +60,7 @@ export const postsSlice = createSlice({
         getAllPosts.fulfilled,
         (state, action: PayloadAction<Post[]>) => {
           state.status = 'idle';
-          state.posts = [...state.posts, ...action.payload];
+          state.posts = [...action.payload];
         }
       )
       .addCase(getAllPosts.rejected, (state) => {
