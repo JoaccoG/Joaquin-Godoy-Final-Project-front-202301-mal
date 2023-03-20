@@ -44,11 +44,16 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(mockedPosts));
     }
   ),
+];
 
-  rest.post(
+export const errorHandlers = [
+  rest.get(
     `${process.env.REACT_APP_API_URL}/api/v1/posts`,
     async (_req, res, ctx) => {
-      return res(ctx.status(201));
+      return res.once(
+        ctx.status(400),
+        ctx.json({ msg: 'Error while getting posts' })
+      );
     }
   ),
 ];
