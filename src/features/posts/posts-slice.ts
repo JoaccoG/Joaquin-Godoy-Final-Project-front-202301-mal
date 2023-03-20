@@ -9,6 +9,8 @@ interface PostsState {
   posts: Post[];
   postCreationStatus: RequestStatus;
   postCreationMsg: string;
+  postGetStatus: RequestStatus;
+  postGetMsg: string;
 }
 
 const initialState: PostsState = {
@@ -16,6 +18,8 @@ const initialState: PostsState = {
   posts: [],
   postCreationStatus: 'idle',
   postCreationMsg: '',
+  postGetStatus: 'idle',
+  postGetMsg: '',
 };
 
 export const getAllPosts = createAsyncThunk(
@@ -61,10 +65,13 @@ export const postsSlice = createSlice({
         (state, action: PayloadAction<Post[]>) => {
           state.status = 'idle';
           state.posts = [...action.payload];
+          state.postGetStatus = 'success';
         }
       )
-      .addCase(getAllPosts.rejected, (state) => {
+      .addCase(getAllPosts.rejected, (state, action: any) => {
         state.status = 'failed';
+        state.postGetStatus = 'error';
+        state.postGetMsg = action.error.message;
       })
 
       .addCase(createNewPost.pending, (state) => {
