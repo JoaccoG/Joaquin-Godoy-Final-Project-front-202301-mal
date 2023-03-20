@@ -1,4 +1,5 @@
 import { rest } from 'msw';
+import { mockedPosts } from './data';
 
 export const handlers = [
   rest.post(
@@ -34,6 +35,20 @@ export const handlers = [
       }
 
       return res(ctx.status(500), ctx.json({ msg: 'Error while logging in' }));
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+    async (_req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockedPosts));
+    }
+  ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+    async (_req, res, ctx) => {
+      return res(ctx.status(201));
     }
   ),
 ];
