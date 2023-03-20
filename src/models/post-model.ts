@@ -7,7 +7,6 @@ export interface Post {
   review: string;
   rating: number;
   photo: string;
-  likes: number;
   date: Date;
 }
 
