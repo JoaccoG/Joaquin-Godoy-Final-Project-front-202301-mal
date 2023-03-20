@@ -17,7 +17,7 @@ export const mockedPosts: Post[] = [
     game: 'game-2' as unknown as Game,
     review: 'This is another review',
     rating: 3,
-    photo: '',
+    photo: 'test.png',
     likes: 2,
     date: new Date('2021-01-02'),
   },
