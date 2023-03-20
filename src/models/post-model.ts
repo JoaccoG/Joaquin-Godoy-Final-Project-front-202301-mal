@@ -9,7 +9,6 @@ export interface Post {
   photo: string;
   likes: number;
   date: Date;
-  formattedDate: string;
 }
 
 export type PostForm = Pick<Post, 'game' | 'review' | 'rating' | 'photo'>;
