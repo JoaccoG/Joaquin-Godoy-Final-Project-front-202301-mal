@@ -57,7 +57,13 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
             {postFeedback()}
             <div className="post-form__wrapper-1">
               <label htmlFor="game">
-                <select id="game" name="game" required data-testid="game">
+                <select
+                  id="game"
+                  name="game"
+                  required
+                  defaultValue=""
+                  data-testid="game"
+                >
                   <option value="" disabled>
                     Choose a game
                   </option>
@@ -73,7 +79,13 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
                 </select>
               </label>
               <label htmlFor="rating">
-                <select id="rating" name="rating" required data-testid="rating">
+                <select
+                  id="rating"
+                  name="rating"
+                  required
+                  defaultValue=""
+                  data-testid="rating"
+                >
                   <option value="" disabled>
                     Rate your game
                   </option>
