@@ -1,0 +1,18 @@
+import { User } from './user-model';
+import { Game } from './game-model';
+
+export interface Post {
+  user: User;
+  game: Game;
+  review: string;
+  rating: number;
+  photo: string;
+  date: Date;
+}
+
+export type PostForm = Pick<Post, 'game' | 'review' | 'rating' | 'photo'>;
+
+export interface PostResponse {
+  msg: string;
+  post: Post;
+}
