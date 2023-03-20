@@ -1,16 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Status } from '../../models/models';
+import { RootState } from '../../app/store';
+import { RequestStatus, Status } from '../../models/models';
 import { Post, PostResponse } from '../../models/post-model';
 import { createPost, getPosts } from './posts-api';
 
 interface PostsState {
   status: Status;
   posts: Post[];
+  postCreationStatus: RequestStatus;
+  postCreationMsg: string;
 }
 
 const initialState: PostsState = {
   status: 'idle',
   posts: [],
+  postCreationStatus: 'idle',
+  postCreationMsg: '',
 };
 
 export const getAllPosts = createAsyncThunk(
@@ -70,10 +75,17 @@ export const postsSlice = createSlice({
         (state, action: PayloadAction<PostResponse>) => {
           state.status = 'idle';
           state.posts = [action.payload.post, ...state.posts];
+          state.postCreationStatus = 'success';
         }
       )
-      .addCase(createNewPost.rejected, (state) => {
+      .addCase(createNewPost.rejected, (state, action: any) => {
         state.status = 'failed';
+        state.postCreationStatus = 'error';
+        state.postCreationMsg = action.error.message;
       });
   },
 });
+
+export const selectPostsSlice = (state: RootState) => state.posts;
+
+export default postsSlice.reducer;
