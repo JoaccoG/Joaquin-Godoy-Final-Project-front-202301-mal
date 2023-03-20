@@ -1,14 +1,10 @@
 import styled from 'styled-components';
 
-interface TextareaProps {
-  textareaHeight: number;
-}
-
 interface PostStatusProps {
   postStatus: 'idle' | 'success' | 'error';
 }
 
-export const PostFormContainer = styled.form<TextareaProps>`
+export const PostFormContainer = styled.form`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -56,7 +52,7 @@ export const PostFormContainer = styled.form<TextareaProps>`
     width: 100%;
     textarea {
       width: 100%;
-      height: ${(props) => props.textareaHeight}px;
+      height: 80px;
       min-height: 32px;
       color: var(--color-primary);
       background-color: var(--bg-color-tertiary);
@@ -64,8 +60,6 @@ export const PostFormContainer = styled.form<TextareaProps>`
       font-size: var(--font-size-xxs);
       margin: var(--margin-m) 0 var(--margin-xs);
       border: none;
-      resize: none;
-      overflow: hidden;
       &:focus {
         outline: none;
       }
