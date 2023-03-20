@@ -2,7 +2,7 @@ import { PostCardContainer } from './post-card-styled';
 import { Post } from '../../../models/post-model';
 import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { Link } from 'react-router-dom';
 
 interface PostCardProps {
@@ -24,7 +24,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
   };
 
   return (
-    <PostCardContainer>
+    <PostCardContainer gameBanner={post.game.banner}>
       <section className="post-card__user-info">
         <Link to={`./user/${post.user.username}`}>
           <img
@@ -37,11 +37,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
       </section>
       <section className="post-card__game-info">
         <Link to={`./games/${post.game.name}`}>
-          <img
-            src={post.game.banner}
-            alt={`Banner of the game ${post.game.name}`}
-            className="game-info__banner"
-          />
+          <div className="game-info__banner" />
           <p className="game-info__name">{post.game.name}</p>
         </Link>
       </section>
@@ -53,17 +49,20 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
             </li>
           ))}
         </ul>
-        <p className="post-info__review">{post.review}</p>
-        {post.photo && <img src={post.photo} alt={`About ${post.game.name}`} />}
-      </section>
-      <section className="post-card__post-counters">
-        <div className="post-counters__likes">
-          <FontAwesomeIcon icon={regular('heart')} />
-          <span>{post.likes} Likes</span>
-        </div>
-        <div className="post-counters__date">
-          <FontAwesomeIcon icon={solid('calendar-alt')} />
+        <div className="post-info__date">
+          <FontAwesomeIcon
+            icon={solid('calendar-alt')}
+            className="date__icon"
+          />
           <span>{handleDateFormat(post.date)}</span>
+        </div>
+      </section>
+      <section className="post-card__review">
+        <p className="review__text">{post.review}</p>
+        <div className="review__img-container">
+          {post.photo && (
+            <img src={post.photo} alt={`About ${post.game.name}`} />
+          )}
         </div>
       </section>
     </PostCardContainer>
