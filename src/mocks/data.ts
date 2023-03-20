@@ -11,16 +11,14 @@ export const mockedPosts: Post[] = [
     photo: '',
     likes: 0,
     date: new Date('2021-01-01'),
-    formattedDate: '01/01/2021',
   },
   {
     user: 'user-2' as unknown as User,
-    game: 'game-2' as unknown as User,
+    game: 'game-2' as unknown as Game,
     review: 'This is another review',
     rating: 3,
     photo: '',
     likes: 2,
     date: new Date('2021-01-02'),
-    formattedDate: '02/01/2021',
   },
 ];
