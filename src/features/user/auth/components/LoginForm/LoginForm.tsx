@@ -39,9 +39,7 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (loginStatus === 'success') {
-      setTimeout(() => {
-        navigate(from, { replace: true });
-      }, 1000);
+      navigate(from, { replace: true });
     }
   }, [loginStatus]);
 
