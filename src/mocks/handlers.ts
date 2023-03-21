@@ -41,7 +41,10 @@ export const handlers = [
   rest.get(
     `${process.env.REACT_APP_API_URL}/api/v1/posts`,
     async (_req, res, ctx) => {
-      return res(ctx.status(200), ctx.json(mockedPosts));
+      return res(
+        ctx.status(200),
+        ctx.json({ msg: 'Successfully get posts', posts: mockedPosts })
+      );
     }
   ),
 ];

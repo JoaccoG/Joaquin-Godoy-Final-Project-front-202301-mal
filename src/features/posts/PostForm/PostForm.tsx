@@ -3,7 +3,7 @@ import { PostFormContainer, PostFormFeedback } from './post-form-styled';
 import { createNewPost, selectPostsSlice } from '../posts-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { FC, useRef } from 'react';
+import { FC } from 'react';
 import Spinner from '../../../shared/Loading/Loading';
 
 interface PostFormProps {
@@ -14,7 +14,6 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
   const dispatch = useAppDispatch();
   const { status, postCreationStatus, postCreationMsg } =
     useAppSelector(selectPostsSlice);
-  const formRef = useRef<HTMLFormElement>(null);
 
   const postFeedback = () => {
     switch (postCreationStatus) {
@@ -43,7 +42,6 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
   return (
     <>
       <PostFormContainer
-        ref={formRef}
         data-testid="posts-form"
         onSubmit={(e) => {
           e.preventDefault();

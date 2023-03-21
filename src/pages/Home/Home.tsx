@@ -1,41 +1,40 @@
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { HomeContainer } from './home-styled';
 import Title from '../../shared/Title/Title';
-import PostCard from '../../features/posts/PostCard/PostCard';
 import PostForm from '../../features/posts/PostForm/PostForm';
-import {
-  getAllPosts,
-  selectPostsSlice,
-} from '../../features/posts/posts-slice';
+import PostCardList from '../../features/posts/PostCardList/PostCardList';
+
+const gamesList = [
+  'Ori And The Will Of The Wisps',
+  'Terraria',
+  'Call Of Duty Warzone',
+  'Satisfactory',
+  'The Witcher 3',
+  'It Takes Two',
+  'Assassins Creed Valhalla',
+  'Age Of Empires IV',
+  'Back 4 Blood',
+  'A Plague Tale Requiem',
+  'Detroit Become Human',
+  'Valheim',
+  'Bioshock Infinite',
+  'Farcry 6',
+  'Need For Speed Heat',
+  'Serious Sam 4',
+  'The Long Dark',
+  'Red Dead Redemption 2',
+  'Stardew Valley',
+  'New World',
+];
 
 const Home = () => {
-  const dispatch = useAppDispatch();
-  const { posts } = useAppSelector(selectPostsSlice);
-
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
-
   return (
     <HomeContainer>
-      <Title text={'Welcome home!'} size={'small'} color={'tertiary'} />
-      <section className="home__post-form">
-        {/*
-        ------------------------------------------------------
-        NOTE: Pasar games acá cuando haga el slice de games...
-        ------------------------------------------------------
-        */}
-        <PostForm games={['game1', 'Game 2', 'Game 3']} />
-      </section>
+      <Title text={'Home page'} size={'small'} color={'tertiary'} />
+      <article className="home__post-form">
+        <PostForm games={gamesList} />
+      </article>
       <section className="home__posts">
-        <ul className="posts__list">
-          {posts.map((post) => (
-            <li key={`${post.user.username}-${post.game.name}-${post.date}`}>
-              <PostCard post={post} />
-            </li>
-          ))}
-        </ul>
+        <PostCardList />
       </section>
     </HomeContainer>
   );

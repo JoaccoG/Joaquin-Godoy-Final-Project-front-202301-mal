@@ -15,7 +15,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
     ratingClasses[i] += ' active';
   }
 
-  const handleDateFormat = (date: Date) => {
+  const handleDateFormat = (date: number) => {
     const newDate = new Date(date);
     const day = newDate.getDate();
     const month = newDate.getMonth() + 1;
@@ -32,7 +32,12 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
             alt={`Avatar of ${post.user.username}`}
             className="user-info__avatar"
           />
-          <p className="user-info__username">@{post.user.username}</p>
+          <div className="user-info__username">
+            <p>
+              {post.user.name} {post.user.surname}
+            </p>
+            <span>@{post.user.username}</span>
+          </div>
         </Link>
       </section>
       <section className="post-card__game-info">

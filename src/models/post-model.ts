@@ -7,12 +7,17 @@ export interface Post {
   review: string;
   rating: number;
   photo: string;
-  date: Date;
+  date: number;
 }
 
 export type PostForm = Pick<Post, 'game' | 'review' | 'rating' | 'photo'>;
 
-export interface PostResponse {
+export interface PostsPostResponse {
   msg: string;
   post: Post;
+}
+
+export interface PostsGetResponse {
+  msg: string;
+  posts: Post[];
 }
