@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Provider } from 'react-redux';
+import { MemoryRouter } from 'react-router-dom';
 import { store } from '../../app/store';
 import Auth from './Auth';
 
@@ -8,7 +9,9 @@ describe('Given an authentication page', () => {
   test('When the page is rendered, then there should be a title', () => {
     render(
       <Provider store={store}>
-        <Auth />
+        <MemoryRouter>
+          <Auth />
+        </MemoryRouter>
       </Provider>
     );
 
@@ -19,7 +22,9 @@ describe('Given an authentication page', () => {
   test('When the button to switch auth type is clicked, then the form should change', async () => {
     render(
       <Provider store={store}>
-        <Auth />
+        <MemoryRouter>
+          <Auth />
+        </MemoryRouter>
       </Provider>
     );
 
