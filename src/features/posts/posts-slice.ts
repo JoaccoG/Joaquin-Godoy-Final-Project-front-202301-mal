@@ -1,7 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
 import { RequestStatus, Status } from '../../models/models';
-import { Post, PostResponse } from '../../models/post-model';
+import {
+  Post,
+  PostsGetResponse,
+  PostsPostResponse,
+} from '../../models/post-model';
 import { createPost, getPosts } from './posts-api';
 
 interface PostsState {
@@ -26,13 +30,13 @@ export const getAllPosts = createAsyncThunk(
   'postsSlice/getAllPosts',
   async () => {
     const apiRes = await getPosts();
-    const data: Post[] = await apiRes.json();
+    const data: PostsGetResponse = await apiRes.json();
 
     if (!apiRes.ok) {
-      throw new Error('Error while getting posts');
+      throw new Error(data.msg);
     }
 
-    return data;
+    return data.posts;
   }
 );
 
@@ -41,13 +45,13 @@ export const createNewPost = createAsyncThunk(
   async (form: HTMLFormElement) => {
     const formData = new FormData(form);
     const apiRes = await createPost(formData);
-    const data: PostResponse = await apiRes.json();
+    const data: PostsPostResponse = await apiRes.json();
 
     if (!apiRes.ok) {
       throw new Error(data.msg);
     }
 
-    return data;
+    return data.post;
   }
 );
 
@@ -79,9 +83,9 @@ export const postsSlice = createSlice({
       })
       .addCase(
         createNewPost.fulfilled,
-        (state, action: PayloadAction<PostResponse>) => {
+        (state, action: PayloadAction<Post>) => {
           state.status = 'idle';
-          state.posts = [action.payload.post, ...state.posts];
+          state.posts = [action.payload, ...state.posts];
           state.postCreationStatus = 'success';
         }
       )
