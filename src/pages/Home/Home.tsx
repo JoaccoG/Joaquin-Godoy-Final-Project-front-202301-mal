@@ -30,9 +30,9 @@ const Home = () => {
   return (
     <HomeContainer>
       <Title text={'Home page'} size={'small'} color={'tertiary'} />
-      <section className="home__post-form">
+      <article className="home__post-form">
         <PostForm games={gamesList} />
-      </section>
+      </article>
       <section className="home__posts">
         <PostCardList />
       </section>
