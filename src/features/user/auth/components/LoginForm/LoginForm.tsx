@@ -41,7 +41,7 @@ const LoginForm = () => {
     if (loginStatus === 'success') {
       navigate(from, { replace: true });
     }
-  }, [loginStatus]);
+  }, [loginStatus, from, navigate]);
 
   return (
     <>
