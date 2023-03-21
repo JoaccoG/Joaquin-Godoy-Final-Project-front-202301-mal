@@ -1,11 +1,17 @@
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import Spinner from '../../../../../shared/Loading/Loading';
 import { loginNewUser, selectAuthSlice } from '../../auth-slice';
 import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
+import Spinner from '../../../../../shared/Loading/Loading';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
   const { status, loginMsg, loginStatus } = useAppSelector(selectAuthSlice);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
 
   const formFeedback = () => {
     switch (loginStatus) {
@@ -30,6 +36,14 @@ const LoginForm = () => {
         );
     }
   };
+
+  useEffect(() => {
+    if (loginStatus === 'success') {
+      setTimeout(() => {
+        navigate(from, { replace: true });
+      }, 1000);
+    }
+  }, [loginStatus]);
 
   return (
     <>
