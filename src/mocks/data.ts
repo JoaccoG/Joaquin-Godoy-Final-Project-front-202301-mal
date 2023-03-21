@@ -9,7 +9,7 @@ export const mockedPosts: Post[] = [
     review: 'This is a review',
     rating: 4,
     photo: '',
-    date: new Date('2021-01-01'),
+    date: 1234567890,
   },
   {
     user: 'user-2' as unknown as User,
@@ -17,6 +17,6 @@ export const mockedPosts: Post[] = [
     review: 'This is another review',
     rating: 3,
     photo: 'test.png',
-    date: new Date('2021-01-02'),
+    date: 1234567890,
   },
 ];
