@@ -5,7 +5,7 @@ interface PostStatusProps {
 }
 
 export const PostFormContainer = styled.form`
-  width: 100%;
+  width: 327px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +52,7 @@ export const PostFormContainer = styled.form`
     width: 100%;
     textarea {
       width: 100%;
-      height: 80px;
+      height: 64px;
       min-height: 32px;
       color: var(--color-primary);
       background-color: var(--bg-color-tertiary);
@@ -60,6 +60,7 @@ export const PostFormContainer = styled.form`
       font-size: var(--font-size-xxs);
       margin: var(--margin-m) 0 var(--margin-xs);
       border: none;
+      resize: vertical;
       &:focus {
         outline: none;
       }
@@ -84,7 +85,7 @@ export const PostFormContainer = styled.form`
       span {
         width: 80%;
         height: 20px;
-        overflow: hidden;
+        overflow-x: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
         color: var(--color-primary);
@@ -116,7 +117,7 @@ export const PostFormContainer = styled.form`
   }
 
   @media screen and (min-width: 768px) {
-    width: 80%;
+    width: 620px;
     padding: var(--padding-m);
     .post-form__wrapper-1 {
       flex-direction: row;
@@ -150,7 +151,7 @@ export const PostFormContainer = styled.form`
   }
 
   @media screen and (min-width: 1440px) {
-    width: 65%;
+    width: 900px;
   }
 `;
 
@@ -158,7 +159,7 @@ export const PostFormFeedback = styled.span<PostStatusProps>`
   display: block;
   width: 100%;
   font-size: var(--font-size-xxs);
-  margin: 0 0 var(--margin-xs) var(--margin-xs);
+  margin: 0 var(--margin-xs) var(--margin-xs);
   color: ${(props) => {
     switch (props.postStatus) {
       case 'success':
