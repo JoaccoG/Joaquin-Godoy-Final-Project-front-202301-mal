@@ -4,6 +4,7 @@ import { store } from '../../../../../app/store';
 import LoginForm from './LoginForm';
 import { server } from '../../../../../mocks/server';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -13,7 +14,9 @@ describe('Given a login form component', () => {
   test('When the component loads, then it should be a welcome message', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <MemoryRouter>
+          <LoginForm />
+        </MemoryRouter>
       </Provider>
     );
 
@@ -25,7 +28,9 @@ describe('Given a login form component', () => {
   test('When a user tries to login with a valid email and password, then he should receive his access token', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <MemoryRouter>
+          <LoginForm />
+        </MemoryRouter>
       </Provider>
     );
 
@@ -48,7 +53,9 @@ describe('Given a login form component', () => {
   test('When there is an error while logging in, then the user should receive an error message as feedback', async () => {
     render(
       <Provider store={store}>
-        <LoginForm />
+        <MemoryRouter>
+          <LoginForm />
+        </MemoryRouter>
       </Provider>
     );
 
