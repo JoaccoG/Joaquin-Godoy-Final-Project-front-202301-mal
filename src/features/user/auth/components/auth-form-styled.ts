@@ -85,16 +85,18 @@ export const AuthStatusFeedback = styled.div<AuthStatusProps>`
   text-align: center;
   color: var(--color-secondary);
   font-size: var(--font-size-s);
-  color: ${(props) => {
-    switch (props.authStatus) {
-      case 'success':
-        return 'var(--color-success)';
-      case 'error':
-        return 'var(--color-danger)';
-      default:
-        return 'var(--color-secondary)';
-    }
-  }};
+  span {
+    color: ${(props) => {
+      switch (props.authStatus) {
+        case 'success':
+          return 'var(--color-success)';
+        case 'error':
+          return 'var(--color-danger)';
+        default:
+          return 'var(--color-secondary)';
+      }
+    }};
+  }
 
   @media screen and (min-width: 1024px) {
     font-size: var(--font-size-m);
