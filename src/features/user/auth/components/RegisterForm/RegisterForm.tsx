@@ -25,7 +25,15 @@ const RegisterForm = () => {
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            <span>Create an account and start posting.</span>
+            <span>
+              Welcome to PlayersNation! In order to access all of our features,
+              you must first create an account. Fill out the registration form
+              below to start posting.
+            </span>
+            <span>
+              If you are already registered, click on the login button above to
+              sign in.
+            </span>
           </AuthStatusFeedback>
         );
     }
