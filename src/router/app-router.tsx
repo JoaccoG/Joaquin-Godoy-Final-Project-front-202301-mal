@@ -3,7 +3,7 @@ import Layout from '../pages/Layout/Layout';
 import Auth from '../pages/Auth/Auth';
 import Error from '../pages/Error/Error';
 import Home from '../pages/Home/Home';
-import RequireAuth from './RequireAuth/RequireAuth';
+import RequireAuth from '../shared/RequireAuth/RequireAuth';
 
 const router = createBrowserRouter([
   {
