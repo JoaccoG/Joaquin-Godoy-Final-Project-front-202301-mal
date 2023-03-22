@@ -13,7 +13,7 @@ export const AuthFormContainer = styled.form`
   gap: var(--margin-l);
   input {
     min-width: 250px;
-    width: 100%;
+    width: 90%;
     max-width: 650px;
     font-size: var(--font-size-s);
     font-family: var(--font-family-inter-bold);
@@ -75,7 +75,7 @@ export const AuthFormContainer = styled.form`
 `;
 
 export const AuthStatusFeedback = styled.div<AuthStatusProps>`
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,16 +85,18 @@ export const AuthStatusFeedback = styled.div<AuthStatusProps>`
   text-align: center;
   color: var(--color-secondary);
   font-size: var(--font-size-s);
-  color: ${(props) => {
-    switch (props.authStatus) {
-      case 'success':
-        return 'var(--color-success)';
-      case 'error':
-        return 'var(--color-danger)';
-      default:
-        return 'var(--color-secondary)';
-    }
-  }};
+  span {
+    color: ${(props) => {
+      switch (props.authStatus) {
+        case 'success':
+          return 'var(--color-success)';
+        case 'error':
+          return 'var(--color-danger)';
+        default:
+          return 'var(--color-secondary)';
+      }
+    }};
+  }
 
   @media screen and (min-width: 1024px) {
     font-size: var(--font-size-m);

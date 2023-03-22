@@ -8,7 +8,6 @@ import Spinner from '../../../../../shared/Loading/Loading';
 const LoginForm = () => {
   const dispatch = useAppDispatch();
   const { status, loginMsg, loginStatus } = useAppSelector(selectAuthSlice);
-
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -17,22 +16,16 @@ const LoginForm = () => {
     switch (loginStatus) {
       case 'success':
         return (
-          <AuthStatusFeedback authStatus="success">
-            <span>Successfully logged in! You will now be redirected...</span>
-            <Spinner color="tertiary" size={75} />
-          </AuthStatusFeedback>
+          <span>Successfully logged in! You will now be redirected...</span>
         );
       case 'error':
-        return (
-          <AuthStatusFeedback authStatus="error">
-            <span>{loginMsg}</span>
-          </AuthStatusFeedback>
-        );
+        return <span>Error while logging in ({loginMsg})</span>;
       default:
         return (
-          <AuthStatusFeedback authStatus="idle">
-            <span>Welcome back! Sign in to use the app.</span>
-          </AuthStatusFeedback>
+          <span>
+            If you don't have an account yet, please click on the register
+            button above to create one.
+          </span>
         );
     }
   };
@@ -41,7 +34,7 @@ const LoginForm = () => {
     if (loginStatus === 'success') {
       navigate(from, { replace: true });
     }
-  }, [loginStatus, from, navigate]);
+  }, [from, loginStatus, navigate]);
 
   return (
     <>
@@ -56,7 +49,14 @@ const LoginForm = () => {
           <Spinner color="tertiary" size={150} />
         ) : (
           <>
-            {formFeedback()}
+            <AuthStatusFeedback authStatus={loginStatus}>
+              <p>
+                Welcome back! Please log in to your account to continue posting,
+                chatting with friends and using our app and all of it's
+                features.
+              </p>
+              {formFeedback()}
+            </AuthStatusFeedback>
             <input
               type="email"
               id="email"

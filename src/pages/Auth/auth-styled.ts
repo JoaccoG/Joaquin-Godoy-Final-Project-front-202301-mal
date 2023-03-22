@@ -6,7 +6,7 @@ export const AuthContainer = styled.section`
   align-items: center;
   justify-content: center;
   gap: var(--margin-m);
-  margin: var(--margin-m) 0;
+  margin: var(--margin-xl) 0;
   .auth__title {
     font-family: var(--font-family-ubuntu-bold);
     font-size: var(--font-size-xxl);
@@ -17,7 +17,7 @@ export const AuthContainer = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--margin-l);
-    margin: var(--margin-l) 0;
+    margin: var(--margin-xxl) 0;
     .auth-info__item {
       min-width: 250px;
       max-width: 350px;
@@ -65,6 +65,7 @@ export const AuthContainer = styled.section`
   }
 
   @media screen and (min-width: 1024px) {
+    margin: var(--margin-xxxl) 0;
     .auth__title {
       font-size: var(--font-size-xxxxl);
     }
