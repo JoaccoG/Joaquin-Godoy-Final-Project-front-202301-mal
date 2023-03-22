@@ -12,29 +12,16 @@ const RegisterForm = () => {
     switch (registerStatus) {
       case 'success':
         return (
-          <AuthStatusFeedback authStatus="success">
-            <span>You have successfully registered! You may now log in...</span>
-          </AuthStatusFeedback>
+          <span>You have successfully registered! You may now log in...</span>
         );
       case 'error':
-        return (
-          <AuthStatusFeedback authStatus="error">
-            <span>{registerMsg}</span>
-          </AuthStatusFeedback>
-        );
+        return <span>Error while registering ({registerMsg})</span>;
       default:
         return (
-          <AuthStatusFeedback authStatus="idle">
-            <span>
-              Welcome to PlayersNation! In order to access all of our features,
-              you must first create an account. Fill out the registration form
-              below to start posting.
-            </span>
-            <span>
-              If you are already registered, click on the login button above to
-              sign in.
-            </span>
-          </AuthStatusFeedback>
+          <span>
+            If you are already registered, click on the login button above to
+            sign in.
+          </span>
         );
     }
   };
@@ -52,7 +39,14 @@ const RegisterForm = () => {
           <Spinner color="tertiary" size={150} />
         ) : (
           <>
-            {formFeedback()}
+            <AuthStatusFeedback authStatus={registerStatus}>
+              <p>
+                Welcome to PlayersNation! In order to access all of our
+                features, you must first create an account. Fill out the
+                registration form below to start posting.
+              </p>
+              {formFeedback()}
+            </AuthStatusFeedback>
             <input
               type="email"
               id="email"
