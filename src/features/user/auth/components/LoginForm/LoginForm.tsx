@@ -7,8 +7,7 @@ import Spinner from '../../../../../shared/Loading/Loading';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
-  const { status, loginMsg, loginStatus, isAuthenticated } =
-    useAppSelector(selectAuthSlice);
+  const { status, loginMsg, loginStatus } = useAppSelector(selectAuthSlice);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
@@ -32,10 +31,10 @@ const LoginForm = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (loginStatus === 'success') {
       navigate(from, { replace: true });
     }
-  }, [isAuthenticated, navigate, from]);
+  }, [from, loginStatus, navigate]);
 
   return (
     <>
