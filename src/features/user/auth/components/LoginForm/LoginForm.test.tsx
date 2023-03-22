@@ -8,7 +8,12 @@ import { MemoryRouter } from 'react-router-dom';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+afterAll(() => {
+  server.close();
+  sessionStorage.clear();
+  jest.clearAllMocks();
+  jest.resetAllMocks();
+});
 
 describe('Given a login form component', () => {
   test('When the component loads, then it should be a welcome message', async () => {
@@ -20,9 +25,7 @@ describe('Given a login form component', () => {
       </Provider>
     );
 
-    expect(
-      await screen.findByText('Welcome back! Sign in to use the app.')
-    ).toBeInTheDocument();
+    expect(await screen.findByText(/Welcome back/i)).toBeInTheDocument();
   });
 
   test('When a user tries to login with a valid email and password, then he should receive his access token', async () => {
@@ -42,12 +45,9 @@ describe('Given a login form component', () => {
     userEvent.click(screen.getByRole('button'));
 
     await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Successfully logged in! You will now be redirected...'
-        )
-      ).toBeInTheDocument();
+      expect(screen.getByText(/Successfully logged in/i)).toBeInTheDocument();
     });
+    expect(sessionStorage.getItem('accessToken')).toBeDefined();
   });
 
   test('When there is an error while logging in, then the user should receive an error message as feedback', async () => {

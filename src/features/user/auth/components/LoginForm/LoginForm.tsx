@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import { loginNewUser, resetStatus, selectAuthSlice } from '../../auth-slice';
+import { loginNewUser, selectAuthSlice } from '../../auth-slice';
 import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
 import Spinner from '../../../../../shared/Loading/Loading';
 
@@ -46,10 +46,9 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (loginStatus === 'success') {
-      dispatch(resetStatus());
       navigate(from, { replace: true });
     }
-  }, [loginStatus, from, navigate, dispatch]);
+  }, [loginStatus, from, navigate]);
 
   return (
     <>

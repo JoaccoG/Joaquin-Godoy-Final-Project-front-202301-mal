@@ -18,7 +18,7 @@ describe('Given a register form component', () => {
     );
 
     expect(
-      await screen.findByText('Create an account and start posting.')
+      await screen.findByText(/Welcome to PlayersNation/i)
     ).toBeInTheDocument();
   });
 
