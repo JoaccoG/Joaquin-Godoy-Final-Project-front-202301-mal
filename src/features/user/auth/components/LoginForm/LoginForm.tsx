@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
-import { loginNewUser, selectAuthSlice } from '../../auth-slice';
+import { loginNewUser, resetStatus, selectAuthSlice } from '../../auth-slice';
 import { AuthFormContainer, AuthStatusFeedback } from '../auth-form-styled';
 import Spinner from '../../../../../shared/Loading/Loading';
 
@@ -31,7 +31,14 @@ const LoginForm = () => {
       default:
         return (
           <AuthStatusFeedback authStatus="idle">
-            <span>Welcome back! Sign in to use the app.</span>
+            <span>
+              Welcome back! Please log in to your account to continue posting,
+              chatting with friends and using our app and all of it's features.
+            </span>
+            <span>
+              If you don't have an account yet, please click on the register
+              button above to create one.
+            </span>
           </AuthStatusFeedback>
         );
     }
@@ -39,9 +46,10 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (loginStatus === 'success') {
+      dispatch(resetStatus());
       navigate(from, { replace: true });
     }
-  }, [loginStatus, from, navigate]);
+  }, [loginStatus, from, navigate, dispatch]);
 
   return (
     <>
