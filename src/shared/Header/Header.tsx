@@ -11,6 +11,10 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = () => {
+    sessionStorage.removeItem('accessToken');
+  };
+
   return (
     <>
       <HeaderButton
@@ -83,7 +87,9 @@ const Header = () => {
                 className="link-item__icon"
                 icon={solid('right-from-bracket')}
               />
-              <Link to={'./'}>Log out</Link>
+              <Link to={'./auth'} onClick={() => handleLogout()}>
+                Log out
+              </Link>
             </li>
           </ul>
         </nav>
