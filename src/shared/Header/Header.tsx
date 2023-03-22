@@ -87,7 +87,11 @@ const Header = () => {
                 className="link-item__icon"
                 icon={solid('right-from-bracket')}
               />
-              <Link to={'./auth'} onClick={() => handleLogout()}>
+              <Link
+                to={'./auth'}
+                onClick={() => handleLogout()}
+                data-testid="logout-btn"
+              >
                 Log out
               </Link>
             </li>
