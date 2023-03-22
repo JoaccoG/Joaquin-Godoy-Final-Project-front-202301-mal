@@ -13,7 +13,7 @@ export const AuthFormContainer = styled.form`
   gap: var(--margin-l);
   input {
     min-width: 250px;
-    width: 100%;
+    width: 90%;
     max-width: 650px;
     font-size: var(--font-size-s);
     font-family: var(--font-family-inter-bold);
