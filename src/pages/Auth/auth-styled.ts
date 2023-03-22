@@ -17,7 +17,7 @@ export const AuthContainer = styled.section`
     justify-content: center;
     flex-wrap: wrap;
     gap: var(--margin-l);
-    margin: var(--margin-l) 0;
+    margin: var(--margin-xxl) 0;
     .auth-info__item {
       min-width: 250px;
       max-width: 350px;
