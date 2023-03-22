@@ -67,7 +67,7 @@ describe('Given a login form component', () => {
     userEvent.click(screen.getByRole('button'));
 
     await waitFor(() => {
-      expect(screen.getByText('Error while logging in')).toBeInTheDocument();
+      expect(screen.getByText(/Error while logging in/i)).toBeInTheDocument();
     });
   });
 });
