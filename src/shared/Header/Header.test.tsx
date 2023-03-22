@@ -20,9 +20,17 @@ describe('Given a header component', () => {
     );
     const btnElement = screen.getByRole('button');
     expect(btnElement).not.toHaveClass('active');
-
     await fireEvent.click(btnElement);
-
     expect(btnElement).toHaveClass('active');
+  });
+
+  test('When the user tries to log out, then he should not have an accessToken key on his sessionStorage', async () => {
+    render(
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    );
+    await fireEvent.click(screen.getByTestId('logout-btn'));
+    expect(sessionStorage.getItem('accessToken')).toBe(null);
   });
 });
