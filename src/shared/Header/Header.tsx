@@ -3,9 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { HeaderButton, HeaderContainer } from './header-styled';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../app/hooks';
+import { logoutUser } from '../../features/user/auth/auth-slice';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
 
   const handleMenuBtnClick = () => {
     setIsOpen(!isOpen);
@@ -13,6 +16,7 @@ const Header = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem('accessToken');
+    dispatch(logoutUser());
   };
 
   return (
