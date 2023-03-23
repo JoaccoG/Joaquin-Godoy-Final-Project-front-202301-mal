@@ -11,6 +11,7 @@ import { createPost, getPosts } from './posts-api';
 interface PostsState {
   status: Status;
   posts: Post[];
+  postsCount: number;
   postCreationStatus: RequestStatus;
   postCreationMsg: string;
   postGetStatus: RequestStatus;
@@ -20,6 +21,7 @@ interface PostsState {
 const initialState: PostsState = {
   status: 'idle',
   posts: [],
+  postsCount: 0,
   postCreationStatus: 'idle',
   postCreationMsg: '',
   postGetStatus: 'idle',
@@ -28,15 +30,15 @@ const initialState: PostsState = {
 
 export const getAllPosts = createAsyncThunk(
   'postsSlice/getAllPosts',
-  async () => {
-    const apiRes = await getPosts();
+  async ({ offset, limit }: { offset: number; limit: number }) => {
+    const apiRes = await getPosts(offset, limit);
     const data: PostsGetResponse = await apiRes.json();
 
     if (!apiRes.ok) {
       throw new Error(data.msg);
     }
 
-    return data.posts;
+    return data;
   }
 );
 
@@ -66,9 +68,10 @@ export const postsSlice = createSlice({
       })
       .addCase(
         getAllPosts.fulfilled,
-        (state, action: PayloadAction<Post[]>) => {
+        (state, action: PayloadAction<PostsGetResponse>) => {
           state.status = 'idle';
-          state.posts = [...action.payload];
+          state.postsCount = action.payload.count;
+          state.posts = [...state.posts, ...action.payload.posts];
           state.postGetStatus = 'success';
         }
       )
