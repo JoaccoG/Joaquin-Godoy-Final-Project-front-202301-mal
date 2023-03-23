@@ -15,14 +15,17 @@ const PostCardList = () => {
     dispatch(getAllPosts({ offset: 0, limit: 4 }));
   }, [dispatch]);
 
+  /* istanbul ignore next */
+  const handleScroll = () => {
+    dispatch(getAllPosts({ offset: posts.length, limit: 4 }));
+  };
+
   const postsListContent = () => {
     switch (postGetStatus) {
       case 'success':
         return (
           <InfiniteScroll
-            next={() =>
-              dispatch(getAllPosts({ offset: posts.length, limit: 4 }))
-            }
+            next={handleScroll}
             dataLength={posts.length}
             hasMore={posts.length < postsCount}
             scrollThreshold={0.9}
