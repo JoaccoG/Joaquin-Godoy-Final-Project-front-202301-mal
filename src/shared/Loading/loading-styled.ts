@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { SpinnerProps } from './Loading';
 
-export const SpinnerContainer = styled.div<SpinnerProps>`
+export const SpinnerContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const SpinnerComponent = styled.div<SpinnerProps>`
   width: ${({ size }) => size}px;
   height: ${({ size }) => size}px;
   margin: var(--margin-m);
