@@ -48,7 +48,7 @@ export const AuthFormContainer = styled.form`
     font-family: var(--font-family-inter-bold);
     font-weight: var(--font-weight-l);
     color: var(--color-primary);
-    background-color: var(--color-tertiary-darker);
+    background-color: var(--color-tertiary);
     padding: var(--padding-s) var(--padding-m);
     border: none;
     border-radius: var(--border-m);
