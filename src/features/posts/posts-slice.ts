@@ -16,6 +16,7 @@ interface PostsState {
   postCreationMsg: string;
   postGetStatus: RequestStatus;
   postGetMsg: string;
+  filePreview: string | undefined;
 }
 
 const initialState: PostsState = {
@@ -26,6 +27,7 @@ const initialState: PostsState = {
   postCreationMsg: '',
   postGetStatus: 'idle',
   postGetMsg: '',
+  filePreview: '',
 };
 
 export const getAllPosts = createAsyncThunk(
@@ -60,9 +62,14 @@ export const createNewPost = createAsyncThunk(
 export const postsSlice = createSlice({
   name: 'postsSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    uploadFile: (state, action: PayloadAction<string | undefined>) => {
+      state.filePreview = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
+      // Get posts cases
       .addCase(getAllPosts.pending, (state) => {
         state.status = 'loading';
       })
@@ -81,6 +88,7 @@ export const postsSlice = createSlice({
         state.postGetMsg = action.error.message;
       })
 
+      // Create post cases
       .addCase(createNewPost.pending, (state) => {
         state.status = 'loading';
       })
@@ -101,5 +109,6 @@ export const postsSlice = createSlice({
 });
 
 export const selectPostsSlice = (state: RootState) => state.posts;
+export const { uploadFile } = postsSlice.actions;
 
 export default postsSlice.reducer;
