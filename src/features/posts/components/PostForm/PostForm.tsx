@@ -1,6 +1,6 @@
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { PostFormContainer, PostFormFeedback } from './post-form-styled';
-import { createNewPost, selectPostsSlice } from '../posts-slice';
+import { createNewPost, selectPostsSlice } from '../../posts-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FC } from 'react';

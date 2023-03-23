@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useAppDispatch, useAppSelector } from '../../../app/hooks';
-import Spinner from '../../../shared/Loading/Loading';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import Spinner from '../../../../shared/Loading/Loading';
 import PostCard from '../PostCard/PostCard';
-import { getAllPosts, selectPostsSlice } from '../posts-slice';
+import { getAllPosts, selectPostsSlice } from '../../posts-slice';
 import { PostCardListContainer } from './post-card-list-styled';
 
 const PostCardList = () => {

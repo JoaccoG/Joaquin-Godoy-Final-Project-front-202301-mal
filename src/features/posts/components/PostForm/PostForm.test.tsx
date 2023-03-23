@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { server } from '../../../mocks/server';
+import { server } from '../../../../mocks/server';
 import { Provider } from 'react-redux';
-import { store } from '../../../app/store';
+import { store } from '../../../../app/store';
 import PostForm from './PostForm';
 import userEvent from '@testing-library/user-event';
 

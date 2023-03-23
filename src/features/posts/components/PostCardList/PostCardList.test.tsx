@@ -1,8 +1,8 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { errorHandlers } from '../../../mocks/handlers';
-import { server } from '../../../mocks/server';
-import { renderWithProviders } from '../../../mocks/utils';
+import { errorHandlers } from '../../../../mocks/handlers';
+import { server } from '../../../../mocks/server';
+import { renderWithProviders } from '../../../../mocks/utils';
 import PostCardList from './PostCardList';
 
 beforeAll(() => server.listen());
