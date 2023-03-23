@@ -64,6 +64,14 @@ export const AuthContainer = styled.section`
     }
   }
 
+  @media screen and (min-width: 768px) {
+    .auth__buttons {
+      button {
+        font-size: var(--font-size-xxl);
+      }
+    }
+  }
+
   @media screen and (min-width: 1024px) {
     margin: var(--margin-xxxl) 0;
     .auth__title {
@@ -80,7 +88,7 @@ export const AuthContainer = styled.section`
     .auth__buttons {
       width: 60%;
       button {
-        font-size: var(--font-size-xxl);
+        font-size: var(--font-size-xxxl);
       }
     }
   }
