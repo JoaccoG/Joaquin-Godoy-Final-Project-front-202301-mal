@@ -2,6 +2,7 @@ import { Post } from './post-model';
 import { Game } from './game-model';
 
 export interface User {
+  _id: string;
   email: string;
   password: string;
   username: string;

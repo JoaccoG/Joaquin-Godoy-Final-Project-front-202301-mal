@@ -2,6 +2,7 @@ import { User } from './user-model';
 import { Game } from './game-model';
 
 export interface Post {
+  _id: string;
   user: User;
   game: Game;
   review: string;
@@ -19,5 +20,6 @@ export interface PostsPostResponse {
 
 export interface PostsGetResponse {
   msg: string;
+  count: number;
   posts: Post[];
 }
