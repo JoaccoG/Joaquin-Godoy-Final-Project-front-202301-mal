@@ -1,7 +1,7 @@
 import { HomeContainer } from './home-styled';
 import Title from '../../shared/Title/Title';
-import PostForm from '../../features/posts/PostForm/PostForm';
-import PostCardList from '../../features/posts/PostCardList/PostCardList';
+import PostForm from '../../features/posts/components/PostForm/PostForm';
+import PostCardList from '../../features/posts/components/PostCardList/PostCardList';
 
 const gamesList = [
   'Ori And The Will Of The Wisps',
@@ -29,7 +29,7 @@ const gamesList = [
 const Home = () => {
   return (
     <HomeContainer>
-      <Title text={'Home page'} size={'small'} color={'tertiary'} />
+      <Title text={'PlayersNation'} size={'large'} color={'tertiary'} />
       <article className="home__post-form">
         <PostForm games={gamesList} />
       </article>

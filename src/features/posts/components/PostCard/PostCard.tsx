@@ -1,5 +1,5 @@
 import { PostCardContainer } from './post-card-styled';
-import { Post } from '../../../models/post-model';
+import { Post } from '../../../../models/post-model';
 import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';

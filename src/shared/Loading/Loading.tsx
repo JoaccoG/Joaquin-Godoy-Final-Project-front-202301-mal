@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { SpinnerContainer } from './loading-styled';
+import { SpinnerContainer, SpinnerComponent } from './loading-styled';
 
 export interface SpinnerProps {
   size: number;
@@ -7,7 +7,11 @@ export interface SpinnerProps {
 }
 
 const Spinner: FC<SpinnerProps> = ({ size, color }) => {
-  return <SpinnerContainer size={size} color={color} data-testid="spinner" />;
+  return (
+    <SpinnerContainer data-testid="spinner">
+      <SpinnerComponent size={size} color={color}></SpinnerComponent>
+    </SpinnerContainer>
+  );
 };
 
 export default Spinner;
