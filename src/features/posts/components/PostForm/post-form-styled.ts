@@ -78,6 +78,7 @@ export const PostFormContainer = styled.form`
     label {
       width: 50%;
       display: flex;
+      padding-left: var(--padding-s);
       align-items: center;
       input {
         display: none;
@@ -99,14 +100,13 @@ export const PostFormContainer = styled.form`
       }
     }
     button {
-      width: 120px;
-      height: var(--font-size-xl);
       color: var(--color-primary);
       background-color: var(--color-tertiary);
       font-size: var(--font-size-s);
       font-family: var(--font-family-inter-bold);
       border: none;
-      border-radius: var(--border-xs);
+      border-radius: var(--border-m);
+      padding: var(--padding-xs) var(--padding-xl);
       cursor: pointer;
       transition: var(--transition-short);
       &:hover {
@@ -137,15 +137,14 @@ export const PostFormContainer = styled.form`
     }
     .post-form__wrapper-2 {
       label {
-        width: 60%;
+        width: 70%;
         .wrapper-2__file-upload-icon {
           font-size: var(--font-size-xxl);
         }
       }
       button {
-        width: 180px;
-        height: var(--font-size-xxl);
         font-size: var(--font-size-m);
+        padding: var(--padding-s) var(--padding-xxl);
       }
     }
   }
@@ -173,5 +172,10 @@ export const PostFormFeedback = styled.span<PostStatusProps>`
 
   @media screen and (min-width: 1024px) {
     font-size: var(--font-size-s);
+    .post-form__wrapper-2 {
+      button {
+        padding: var(--padding-s) var(--padding-xxxl);
+      }
+    }
   }
 `;
