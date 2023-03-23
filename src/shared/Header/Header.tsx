@@ -15,7 +15,6 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    sessionStorage.removeItem('accessToken');
     dispatch(logoutUser());
   };
 

@@ -64,6 +64,7 @@ export const authSlice = createSlice({
       state.loginStatus = 'idle';
       state.registerMsg = '';
       state.loginMsg = '';
+      sessionStorage.clear();
     },
   },
   extraReducers: (builder) => {
@@ -94,6 +95,7 @@ export const authSlice = createSlice({
           state.status = 'idle';
           state.loginStatus = 'success';
           state.loginMsg = action.payload.msg;
+          sessionStorage.setItem('user', action.payload.user);
           sessionStorage.setItem('accessToken', action.payload.accessToken);
         }
       )
