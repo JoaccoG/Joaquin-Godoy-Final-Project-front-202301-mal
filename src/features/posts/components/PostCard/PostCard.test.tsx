@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
-import { store } from '../../../app/store';
-import { mockedPosts } from '../../../mocks/data';
+import { store } from '../../../../app/store';
+import { mockedPosts } from '../../../../mocks/data';
 import PostCard from './PostCard';
 
 describe('Given a post card component', () => {
