@@ -30,6 +30,7 @@ const PostCardList = () => {
             endMessage={
               <div className="posts-list__end">
                 <p>There's not much more to see here...</p>
+                <p>¡You've seen it all!</p>
               </div>
             }
           >
