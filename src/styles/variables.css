@@ -4,9 +4,8 @@
   --color-secondary: hsl(231, 13%, 59%);
   --color-secondary-hover: hsl(231, 13%, 72%);
   --color-secondary-darker: hsl(231, 13%, 50%);
-  --color-tertiary: hsl(14, 98%, 60%);
+  --color-tertiary: hsl(14, 85%, 55%);
   --color-tertiary-hover: hsl(14, 98%, 68%);
-  --color-tertiary-darker: hsl(14, 85%, 55%);
   --color-success: hsl(120, 50%, 50%);
   --color-warning: hsl(60, 50%, 50%);
   --color-danger: hsl(0, 50%, 50%);
