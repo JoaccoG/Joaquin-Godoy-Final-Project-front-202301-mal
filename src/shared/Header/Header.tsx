@@ -36,67 +36,79 @@ const Header = () => {
         <nav className="header__navbar">
           <ul className="header-navbar__links-list">
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('house')}
-              />
-              <Link className="active" to={'./'}>
-                Home
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('house')}
+                />
+                <p className="active">Home</p>
               </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('user')}
-              />
-              <Link to={'./'}>Profile</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('user')}
+                />
+                <p>Profile</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('gamepad')}
-              />
-              <Link to={'./'}>Games</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('gamepad')}
+                />
+                <p>Games</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('chart-simple')}
-              />
-              <Link to={'./'}>Statistics</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('chart-simple')}
+                />
+                <p>Statistics</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('bell')}
-              />
-              <Link to={'./'}>Notifications</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('bell')}
+                />
+                <p>Notifications</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('comments')}
-              />
-              <Link to={'./'}>Messages</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('comments')}
+                />
+                <p>Messages</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('circle-info')}
-              />
-              <Link to={'./'}>Contact</Link>
+              <Link to={'./'}>
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('circle-info')}
+                />
+                <p>Contact</p>
+              </Link>
             </li>
             <li className="links-list__link-item">
-              <FontAwesomeIcon
-                className="link-item__icon"
-                icon={solid('right-from-bracket')}
-              />
               <Link
                 to={'./auth'}
                 onClick={() => handleLogout()}
                 data-testid="logout-btn"
               >
-                Log out
+                <FontAwesomeIcon
+                  className="link-item__icon"
+                  icon={solid('right-from-bracket')}
+                />
+                <p>Log out</p>
               </Link>
             </li>
           </ul>
