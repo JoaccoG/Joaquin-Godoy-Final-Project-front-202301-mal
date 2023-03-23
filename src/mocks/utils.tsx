@@ -23,6 +23,7 @@ export const renderWithProviders = (
       posts: {
         status: 'idle',
         posts: [],
+        postsCount: 0,
         postCreationStatus: 'idle',
         postCreationMsg: '',
         postGetStatus: 'idle',
