@@ -29,7 +29,7 @@ const gamesList = [
 const Home = () => {
   return (
     <HomeContainer>
-      <Title text={'Home page'} size={'small'} color={'tertiary'} />
+      <Title text={'PlayersNation'} size={'large'} color={'tertiary'} />
       <article className="home__post-form">
         <PostForm games={gamesList} />
       </article>
