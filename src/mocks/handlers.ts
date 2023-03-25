@@ -2,6 +2,16 @@ import { rest } from 'msw';
 import { mockedPosts } from './data';
 
 export const handlers = [
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({ msg: 'Successfully get posts', posts: mockedPosts })
+      );
+    }
+  ),
+
   rest.post(
     `${process.env.REACT_APP_API_URL}/auth/register`,
     async (req, res, ctx) => {
@@ -38,12 +48,15 @@ export const handlers = [
     }
   ),
 
-  rest.get(
-    `${process.env.REACT_APP_API_URL}/api/v1/posts`,
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts/${mockedPosts[0]._id}`,
     async (_req, res, ctx) => {
       return res(
         ctx.status(200),
-        ctx.json({ msg: 'Successfully get posts', posts: mockedPosts })
+        ctx.json({
+          msg: 'Post successfully deleted',
+          post: mockedPosts[0]._id,
+        })
       );
     }
   ),
@@ -56,6 +69,18 @@ export const errorHandlers = [
       return res.once(
         ctx.status(400),
         ctx.json({ msg: 'Error while getting posts' })
+      );
+    }
+  ),
+
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts/${mockedPosts[1]._id}`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          msg: 'Error while deleting post',
+        })
       );
     }
   ),
