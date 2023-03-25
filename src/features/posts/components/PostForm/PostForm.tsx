@@ -45,6 +45,7 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(createNewPost(e.currentTarget));
+          e.currentTarget.reset();
         }}
       >
         <>
@@ -97,7 +98,7 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
               id="review"
               name="review"
               placeholder="Tell others your experience..."
-              maxLength={300}
+              maxLength={240}
               data-testid="review"
             />
           </label>
