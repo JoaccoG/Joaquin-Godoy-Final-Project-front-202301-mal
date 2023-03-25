@@ -12,7 +12,7 @@ const RequireAuth: FC<RequireAuthProps> = ({ children }) => {
   if (!isAuthenticated) {
     return (
       <Navigate
-        to={`/auth?redirect=${location}`}
+        to={`/auth?redirect=${location.pathname}`}
         replace={true}
         state={{ from: location }}
       />
