@@ -129,7 +129,7 @@ export const postsSlice = createSlice({
         deleteOnePost.fulfilled,
         (state, action: PayloadAction<PostsDeleteResponse>) => {
           state.status = 'idle';
-          /* TODO: Mock store with preloaded data for one test to avoid findIndex array method return -1 */
+          /* Mock store with preloaded data for one test to avoid findIndex array method return -1 */
           /* istanbul ignore next */
           const postToDelete = state.posts.findIndex(
             (post) => post._id === action.payload.post
