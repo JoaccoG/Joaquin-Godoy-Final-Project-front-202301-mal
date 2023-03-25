@@ -139,10 +139,12 @@ export const PostCardContainer = styled.article<PostCardProps>`
     }
     .review__img-container {
       width: 100%;
+      max-height: 250px;
       display: flex;
       justify-content: center;
       img {
         margin: var(--margin-s) 0 var(--margin-xxs);
+        max-height: 250px;
         max-width: 100%;
         object-fit: cover;
         object-position: center;
@@ -216,13 +218,6 @@ export const PostCardContainer = styled.article<PostCardProps>`
         .game-info__name {
           font-size: var(--font-size-m);
           padding: 0 var(--padding-xl) 0;
-        }
-      }
-    }
-    .post-card__review {
-      .review__img-container {
-        img {
-          width: 80%;
         }
       }
     }
