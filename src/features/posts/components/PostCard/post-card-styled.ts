@@ -20,6 +20,8 @@ export const PostCardContainer = styled.article<PostCardProps>`
   border-radius: var(--border-xs);
   .post-card__user-info {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
     a {
       display: flex;
       align-items: center;
@@ -48,6 +50,14 @@ export const PostCardContainer = styled.article<PostCardProps>`
           font-size: var(--font-size-xs);
           color: var(--color-tertiary);
         }
+      }
+    }
+    .user-info__delete-post {
+      font-size: var(--font-size-m);
+      margin: calc(var(--margin-xs) / 2) calc(var(--margin-xs) / 2) 0 0;
+      svg {
+        padding: calc(var(--margin-xxs) / 2);
+        cursor: pointer;
       }
     }
   }
