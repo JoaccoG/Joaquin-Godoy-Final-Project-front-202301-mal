@@ -3,10 +3,11 @@ import { RootState } from '../../app/store';
 import { RequestStatus, Status } from '../../models/models';
 import {
   Post,
+  PostsDeleteResponse,
   PostsGetResponse,
   PostsPostResponse,
 } from '../../models/post-model';
-import { createPost, getPosts } from './posts-api';
+import { createPost, deletePost, getPosts } from './posts-api';
 
 interface PostsState {
   status: Status;
@@ -16,6 +17,7 @@ interface PostsState {
   postCreationMsg: string;
   postGetStatus: RequestStatus;
   postGetMsg: string;
+  filePreview: string | undefined;
 }
 
 const initialState: PostsState = {
@@ -26,6 +28,7 @@ const initialState: PostsState = {
   postCreationMsg: '',
   postGetStatus: 'idle',
   postGetMsg: '',
+  filePreview: '',
 };
 
 export const getAllPosts = createAsyncThunk(
@@ -57,12 +60,31 @@ export const createNewPost = createAsyncThunk(
   }
 );
 
+export const deleteOnePost = createAsyncThunk(
+  'postsSlice/deleteOnePost',
+  async (postId: string) => {
+    const apiRes = await deletePost(postId);
+    const data: PostsDeleteResponse = await apiRes.json();
+
+    if (!apiRes.ok) {
+      throw new Error(data.msg);
+    }
+
+    return data;
+  }
+);
+
 export const postsSlice = createSlice({
   name: 'postsSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    uploadFile: (state, action: PayloadAction<string | undefined>) => {
+      state.filePreview = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
+      // Get posts cases
       .addCase(getAllPosts.pending, (state) => {
         state.status = 'loading';
       })
@@ -71,7 +93,7 @@ export const postsSlice = createSlice({
         (state, action: PayloadAction<PostsGetResponse>) => {
           state.status = 'idle';
           state.postsCount = action.payload.count;
-          state.posts = [...state.posts, ...action.payload.posts];
+          state.posts.push(...action.payload.posts);
           state.postGetStatus = 'success';
         }
       )
@@ -81,6 +103,7 @@ export const postsSlice = createSlice({
         state.postGetMsg = action.error.message;
       })
 
+      // Create post cases
       .addCase(createNewPost.pending, (state) => {
         state.status = 'loading';
       })
@@ -88,7 +111,7 @@ export const postsSlice = createSlice({
         createNewPost.fulfilled,
         (state, action: PayloadAction<Post>) => {
           state.status = 'idle';
-          state.posts = [action.payload, ...state.posts];
+          state.posts.unshift({ ...action.payload });
           state.postCreationStatus = 'success';
         }
       )
@@ -96,10 +119,31 @@ export const postsSlice = createSlice({
         state.status = 'failed';
         state.postCreationStatus = 'error';
         state.postCreationMsg = action.error.message;
+      })
+
+      // Delete post cases
+      .addCase(deleteOnePost.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(
+        deleteOnePost.fulfilled,
+        (state, action: PayloadAction<PostsDeleteResponse>) => {
+          state.status = 'idle';
+          /* Mock store with preloaded data for one test to avoid findIndex array method return -1 */
+          /* istanbul ignore next */
+          const postToDelete = state.posts.findIndex(
+            (post) => post._id === action.payload.post
+          );
+          state.posts.splice(postToDelete, 1);
+        }
+      )
+      .addCase(deleteOnePost.rejected, (state) => {
+        state.status = 'failed';
       });
   },
 });
 
 export const selectPostsSlice = (state: RootState) => state.posts;
+export const { uploadFile } = postsSlice.actions;
 
 export default postsSlice.reducer;

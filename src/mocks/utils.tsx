@@ -28,6 +28,7 @@ export const renderWithProviders = (
         postCreationMsg: '',
         postGetStatus: 'idle',
         postGetMsg: '',
+        filePreview: '',
       },
     },
     store = setupStore(preloadedState),

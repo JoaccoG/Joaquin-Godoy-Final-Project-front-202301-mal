@@ -1,6 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { PostFormContainer, PostFormFeedback } from './post-form-styled';
-import { createNewPost, selectPostsSlice } from '../../posts-slice';
+import { createNewPost, selectPostsSlice, uploadFile } from '../../posts-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FC } from 'react';
@@ -11,7 +11,7 @@ interface PostFormProps {
 
 const PostForm: FC<PostFormProps> = ({ games }) => {
   const dispatch = useAppDispatch();
-  const { postCreationStatus, postCreationMsg } =
+  const { postCreationStatus, postCreationMsg, filePreview } =
     useAppSelector(selectPostsSlice);
 
   const postFeedback = () => {
@@ -31,8 +31,8 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
       case 'error':
         return (
           <PostFormFeedback postStatus={postCreationStatus}>
-            Error during post creation, please try again later. (
-            {postCreationMsg})
+            Error during post creation, please try again later (
+            {postCreationMsg}).
           </PostFormFeedback>
         );
     }
@@ -45,6 +45,7 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(createNewPost(e.currentTarget));
+          e.currentTarget.reset();
         }}
       >
         <>
@@ -97,7 +98,7 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
               id="review"
               name="review"
               placeholder="Tell others your experience..."
-              maxLength={300}
+              maxLength={240}
               data-testid="review"
             />
           </label>
@@ -107,10 +108,14 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
                 className="wrapper-2__file-upload-icon"
                 icon={solid('image')}
               />
+              <span>{filePreview}</span>
               <input
                 type="file"
                 name="photo"
                 id="photo"
+                onChange={(e) => {
+                  dispatch(uploadFile(e.target.files?.[0].name));
+                }}
                 accept="image/jpeg,image/jpg,image/png,image/webp"
                 data-testid="photo"
               />

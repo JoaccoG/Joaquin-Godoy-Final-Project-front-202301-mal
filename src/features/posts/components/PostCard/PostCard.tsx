@@ -4,12 +4,16 @@ import { FC } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../../app/hooks';
+import { deleteOnePost } from '../../posts-slice';
 
 interface PostCardProps {
   post: Post;
 }
 
 const PostCard: FC<PostCardProps> = ({ post }) => {
+  const dispatch = useAppDispatch();
+  const user = sessionStorage.getItem('user');
   const ratingClasses = ['star-1', 'star-2', 'star-3', 'star-4', 'star-5'];
   for (let i = 0; i < post.rating; i++) {
     ratingClasses[i] += ' active';
@@ -39,6 +43,17 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
             <span>@{post.user.username}</span>
           </div>
         </Link>
+        {user === post.user._id ? (
+          <div className="user-info__delete-post">
+            <FontAwesomeIcon
+              icon={solid('xmark')}
+              data-testid="delete-btn"
+              onClick={() => dispatch(deleteOnePost(post._id))}
+            />
+          </div>
+        ) : (
+          <></>
+        )}
       </section>
       <section className="post-card__game-info">
         <Link to={`./games/${post.game.name}`}>

@@ -26,3 +26,17 @@ export const createPost = async (formData: FormData) => {
 
   return response;
 };
+
+export const deletePost = async (postId: string) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/v1/posts/${postId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+      },
+    }
+  );
+
+  return response;
+};

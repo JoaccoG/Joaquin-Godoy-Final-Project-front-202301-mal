@@ -5,4 +5,5 @@ export type RequestStatus = 'idle' | 'success' | 'error';
 export interface RequestResponse {
   msg: string;
   accessToken: string;
+  user: string;
 }

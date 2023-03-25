@@ -13,13 +13,18 @@ export interface Post {
 
 export type PostForm = Pick<Post, 'game' | 'review' | 'rating' | 'photo'>;
 
+export interface PostsGetResponse {
+  msg: string;
+  count: number;
+  posts: Post[];
+}
+
 export interface PostsPostResponse {
   msg: string;
   post: Post;
 }
 
-export interface PostsGetResponse {
+export interface PostsDeleteResponse {
   msg: string;
-  count: number;
-  posts: Post[];
+  post: string;
 }
