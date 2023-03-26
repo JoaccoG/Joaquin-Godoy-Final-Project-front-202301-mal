@@ -43,6 +43,28 @@ export const getOneUser = createAsyncThunk(
   }
 );
 
+export const getPostsByUser = createAsyncThunk(
+  'usersSlice/getPostsByUser',
+  async ({
+    userId,
+    offset,
+    limit,
+  }: {
+    userId: string;
+    offset: number;
+    limit: number;
+  }) => {
+    const apiRes = await getPostsByUserId(userId, offset, limit);
+    const data: UserPostsResponse = await apiRes.json();
+
+    if (!apiRes.ok) {
+      throw new Error(data.msg);
+    }
+
+    return data;
+  }
+);
+
 export const usersSlice = createSlice({
   name: 'usersSlice',
   initialState,
@@ -64,6 +86,22 @@ export const usersSlice = createSlice({
       .addCase(getOneUser.rejected, (state) => {
         state.status = 'failed';
         state.getOneUserStatus = 'error';
+      })
+
+      // Get posts by user cases
+      .addCase(getPostsByUser.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(
+        getPostsByUser.fulfilled,
+        (state, action: PayloadAction<UserPostsResponse>) => {
+          state.status = 'idle';
+          state.userPosts.push(...action.payload.posts);
+          state.userPostsCount = action.payload.count;
+        }
+      )
+      .addCase(getPostsByUser.rejected, (state) => {
+        state.status = 'failed';
       });
   },
 });
