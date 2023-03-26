@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface AuthStatusProps {
-  authStatus: 'idle' | 'success' | 'error';
+  authStatus: 'idle' | 'loading' | 'success' | 'error';
 }
 
 export const AuthFormContainer = styled.form`
