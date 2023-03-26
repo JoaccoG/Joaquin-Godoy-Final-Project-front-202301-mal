@@ -6,6 +6,7 @@ import { errorHandlers } from '../../../../mocks/handlers';
 import { server } from '../../../../mocks/server';
 import { renderWithProviders } from '../../../../mocks/utils';
 import { RequestStatus, Status } from '../../../../models/models';
+import { UserProfile } from '../../../../models/user-model';
 import PostCard from './PostCard';
 
 beforeAll(() => server.listen());
@@ -75,6 +76,14 @@ describe('Given a post card component', () => {
         postGetMsg: '',
         filePreview: '',
       },
+      users: {
+        status: 'idle' as Status,
+        user: {} as UserProfile,
+        getOneUserStatus: 'idle' as RequestStatus,
+        userPosts: [],
+        userPostsCount: 0,
+        getUserPostsStatus: 'idle' as RequestStatus,
+      },
     };
 
     renderWithProviders(
@@ -87,7 +96,7 @@ describe('Given a post card component', () => {
     await userEvent.click(screen.getByTestId('delete-btn'));
 
     await waitFor(async () => {
-      await expect(screen.getByText('Game 2')).toBeInTheDocument();
+      expect(screen.getByText('Game 2')).toBeInTheDocument();
     });
   });
 });
