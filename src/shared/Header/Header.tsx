@@ -38,6 +38,7 @@ const Header = () => {
               <NavLink
                 to={'./'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="home-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -50,6 +51,7 @@ const Header = () => {
               <NavLink
                 to={`./user/${sessionStorage.getItem('user')}`}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="profile-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -62,6 +64,7 @@ const Header = () => {
               <NavLink
                 to={'./games'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="games-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -74,6 +77,7 @@ const Header = () => {
               <NavLink
                 to={'./statistics'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="statistics-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -86,6 +90,7 @@ const Header = () => {
               <NavLink
                 to={'./notifications'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="notifications-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -98,6 +103,7 @@ const Header = () => {
               <NavLink
                 to={'./messages'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="messages-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
@@ -110,6 +116,7 @@ const Header = () => {
               <NavLink
                 to={'./contact'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="contact-link"
               >
                 <FontAwesomeIcon
                   className="link-item__icon"
