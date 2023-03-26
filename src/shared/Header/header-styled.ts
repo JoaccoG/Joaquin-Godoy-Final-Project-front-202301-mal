@@ -111,6 +111,9 @@ export const HeaderContainer = styled.header<HeaderProps>`
           &:hover > p {
             border-bottom: 3px solid var(--color-tertiary);
           }
+          &.active {
+            transform: translateY(-4px);
+          }
           &.active > p {
             font-family: var(--font-family-inter-bold);
             border-bottom: 3px solid var(--color-tertiary);
