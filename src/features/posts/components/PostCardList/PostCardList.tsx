@@ -2,13 +2,19 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import Spinner from '../../../../shared/Loading/Loading';
 import PostCard from '../PostCard/PostCard';
-import { getAllPosts, selectPostsSlice } from '../../posts-slice';
+import { getAllPosts, resetPosts, selectPostsSlice } from '../../posts-slice';
 import { PostCardListContainer } from './post-card-list-styled';
+import { useEffect } from 'react';
 
 const PostCardList = () => {
   const dispatch = useAppDispatch();
   const { posts, postsCount, postGetStatus, postGetMsg } =
     useAppSelector(selectPostsSlice);
+
+  useEffect(() => {
+    dispatch(resetPosts());
+    dispatch(getAllPosts({ offset: 0, limit: 4 }));
+  }, [dispatch]);
 
   // Due to how jsdom works, there is no current way to cover the infinite scroll "next" function with Jest.
   // Cypress E2E test must be written to test and cover it.
