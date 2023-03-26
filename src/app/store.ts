@@ -20,6 +20,7 @@ export const store = configureStore({
 const rootReducers = combineReducers({
   auth: authReducer,
   posts: postsReducer,
+  users: usersSlice,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
