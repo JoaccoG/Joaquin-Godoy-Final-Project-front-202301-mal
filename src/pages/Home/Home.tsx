@@ -2,6 +2,9 @@ import { HomeContainer } from './home-styled';
 import Title from '../../shared/Title/Title';
 import PostForm from '../../features/posts/components/PostForm/PostForm';
 import PostCardList from '../../features/posts/components/PostCardList/PostCardList';
+import { useEffect } from 'react';
+import { useAppDispatch } from '../../app/hooks';
+import { getAllPosts } from '../../features/posts/posts-slice';
 
 const gamesList = [
   'Ori And The Will Of The Wisps',
@@ -27,6 +30,12 @@ const gamesList = [
 ];
 
 const Home = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getAllPosts({ offset: 0, limit: 4 }));
+  }, [dispatch]);
+
   return (
     <HomeContainer>
       <Title text={'PlayersNation'} size={'large'} color={'tertiary'} />
