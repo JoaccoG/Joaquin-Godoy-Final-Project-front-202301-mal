@@ -3,6 +3,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { AppStore, RootState, setupStore } from '../app/store';
+import { UserProfile } from '../models/user-model';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
@@ -29,6 +30,13 @@ export const renderWithProviders = (
         postGetStatus: 'idle',
         postGetMsg: '',
         filePreview: '',
+      },
+      users: {
+        status: 'idle',
+        user: {} as UserProfile,
+        getOneUserStatus: 'idle',
+        userPosts: [],
+        userPostsCount: 0,
       },
     },
     store = setupStore(preloadedState),
