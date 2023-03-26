@@ -30,7 +30,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
   return (
     <PostCardContainer gameBanner={post.game.banner}>
       <section className="post-card__user-info">
-        <Link to={`./user/${post.user.username}`}>
+        <Link to={`./user/${post.user._id}`}>
           <img
             src={post.user.avatar}
             alt={`Avatar of ${post.user.username}`}
@@ -56,7 +56,7 @@ const PostCard: FC<PostCardProps> = ({ post }) => {
         )}
       </section>
       <section className="post-card__game-info">
-        <Link to={`./games/${post.game.name}`}>
+        <Link to={`./games/${post.game._id}`}>
           <div className="game-info__banner" />
           <p className="game-info__name">{post.game.name}</p>
         </Link>
