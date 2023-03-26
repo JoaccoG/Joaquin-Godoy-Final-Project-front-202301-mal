@@ -26,9 +26,9 @@ export interface UserProfile
 
 export interface UserProfileResponse {
   msg: string;
-  user: UserProfile;
-  followersCount: number;
-  followingCount: number;
+  user: User;
+  userFollowersCount: number;
+  userFollowingCount: number;
 }
 
 export interface UserPostsResponse {
