@@ -15,6 +15,7 @@ interface UsersState {
   getOneUserStatus: RequestStatus;
   userPosts: Post[];
   userPostsCount: number;
+  getUserPostsStatus: RequestStatus;
 }
 
 const initialState: UsersState = {
@@ -23,6 +24,7 @@ const initialState: UsersState = {
   getOneUserStatus: 'idle',
   userPosts: [],
   userPostsCount: 0,
+  getUserPostsStatus: 'idle',
 };
 
 export const getOneUser = createAsyncThunk(
@@ -68,7 +70,11 @@ export const getPostsByUser = createAsyncThunk(
 export const usersSlice = createSlice({
   name: 'usersSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    resetUserPosts: (state) => {
+      state.userPosts = [];
+    },
+  },
   extraReducers: (builder) => {
     builder
       // Get one user cases
@@ -96,16 +102,19 @@ export const usersSlice = createSlice({
         getPostsByUser.fulfilled,
         (state, action: PayloadAction<UserPostsResponse>) => {
           state.status = 'idle';
+          state.getUserPostsStatus = 'success';
           state.userPosts.push(...action.payload.posts);
           state.userPostsCount = action.payload.count;
         }
       )
       .addCase(getPostsByUser.rejected, (state) => {
         state.status = 'failed';
+        state.getUserPostsStatus = 'error';
       });
   },
 });
 
 export const selectUserSlice = (state: RootState) => state.users;
+export const { resetUserPosts } = usersSlice.actions;
 
 export default usersSlice.reducer;
