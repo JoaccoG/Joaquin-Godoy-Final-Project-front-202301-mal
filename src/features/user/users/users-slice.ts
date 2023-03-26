@@ -71,8 +71,10 @@ export const usersSlice = createSlice({
   name: 'usersSlice',
   initialState,
   reducers: {
-    resetUserPosts: (state) => {
+    resetStates: (state) => {
+      state.user = {} as UserProfile;
       state.userPosts = [];
+      state.userPostsCount = 0;
     },
   },
   extraReducers: (builder) => {
@@ -115,6 +117,6 @@ export const usersSlice = createSlice({
 });
 
 export const selectUserSlice = (state: RootState) => state.users;
-export const { resetUserPosts } = usersSlice.actions;
+export const { resetStates } = usersSlice.actions;
 
 export default usersSlice.reducer;
