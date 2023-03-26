@@ -4,6 +4,7 @@ import Auth from '../pages/Auth/Auth';
 import Error from '../pages/Error/Error';
 import Home from '../pages/Home/Home';
 import RequireAuth from '../shared/RequireAuth/RequireAuth';
+import Profile from '../pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,14 @@ const router = createBrowserRouter([
         element: (
           <RequireAuth>
             <Home />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'user/:id',
+        element: (
+          <RequireAuth>
+            <Profile />
           </RequireAuth>
         ),
       },
