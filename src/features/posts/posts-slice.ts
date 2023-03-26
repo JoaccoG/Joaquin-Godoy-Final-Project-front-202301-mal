@@ -81,6 +81,10 @@ export const postsSlice = createSlice({
     uploadFile: (state, action: PayloadAction<string | undefined>) => {
       state.filePreview = action.payload;
     },
+    resetPosts: (state) => {
+      state.posts = [];
+      state.postsCount = 0;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -144,6 +148,6 @@ export const postsSlice = createSlice({
 });
 
 export const selectPostsSlice = (state: RootState) => state.posts;
-export const { uploadFile } = postsSlice.actions;
+export const { uploadFile, resetPosts } = postsSlice.actions;
 
 export default postsSlice.reducer;
