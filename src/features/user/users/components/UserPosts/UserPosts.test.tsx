@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { errorHandlers } from '../../../../../mocks/handlers';
+import { mockedPosts } from '../../../../../mocks/data';
 import { server } from '../../../../../mocks/server';
 import { renderWithProviders } from '../../../../../mocks/utils';
 import UserPosts from './UserPosts';
@@ -14,25 +14,12 @@ describe('Given a user posts component', () => {
     test('Then there should be posts in the document', async () => {
       renderWithProviders(
         <MemoryRouter>
-          <UserPosts userId={'1234'} />
+          <UserPosts userId={'1234'} userPosts={mockedPosts} />
         </MemoryRouter>
       );
 
       await waitFor(() => {
         expect(screen.getByText(/user-1/i)).toBeInTheDocument();
-      });
-    });
-
-    test('But there is an error while fetching posts data, then an error feedback message should be shown', async () => {
-      server.use(...errorHandlers);
-      renderWithProviders(
-        <MemoryRouter>
-          <UserPosts userId={'1234'} />
-        </MemoryRouter>
-      );
-
-      await waitFor(() => {
-        expect(screen.getByText(/error/i)).toBeInTheDocument();
       });
     });
   });
