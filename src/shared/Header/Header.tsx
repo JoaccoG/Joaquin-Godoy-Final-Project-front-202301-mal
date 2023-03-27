@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { HeaderButton, HeaderContainer } from './header-styled';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { logoutUser } from '../../features/user/auth/auth-slice';
 
@@ -21,7 +21,7 @@ const Header = () => {
   return (
     <>
       <HeaderButton
-        className={isOpen ? 'active' : ''}
+        className={isOpen ? 'open' : ''}
         type="button"
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
         onClick={() => handleMenuBtnClick()}
@@ -35,67 +35,95 @@ const Header = () => {
         <nav className="header__navbar">
           <ul className="header-navbar__links-list">
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="home-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('house')}
                 />
-                <p className="active">Home</p>
-              </Link>
+                <p>Home</p>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={`./user/${sessionStorage.getItem('user')}`}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="profile-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('user')}
                 />
                 <p>Profile</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./games'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="games-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('gamepad')}
                 />
                 <p>Games</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./statistics'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="statistics-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('chart-simple')}
                 />
                 <p>Statistics</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./notifications'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="notifications-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('bell')}
                 />
                 <p>Notifications</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./messages'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="messages-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('comments')}
                 />
                 <p>Messages</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
-              <Link to={'./'}>
+              <NavLink
+                to={'./contact'}
+                className={({ isActive }) => (isActive ? 'active' : '')}
+                data-testid="contact-link"
+              >
                 <FontAwesomeIcon
                   className="link-item__icon"
                   icon={solid('circle-info')}
                 />
                 <p>Contact</p>
-              </Link>
+              </NavLink>
             </li>
             <li className="links-list__link-item">
               <Link

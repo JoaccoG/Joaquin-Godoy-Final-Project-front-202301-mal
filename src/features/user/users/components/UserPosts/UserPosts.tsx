@@ -1,36 +1,41 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
-import Spinner from '../../../../shared/Loading/Loading';
-import PostCard from '../PostCard/PostCard';
-import { getAllPosts, resetPosts, selectPostsSlice } from '../../posts-slice';
-import { PostCardListContainer } from './post-card-list-styled';
-import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
+import Spinner from '../../../../../shared/Loading/Loading';
+import { FC, useEffect } from 'react';
+import { getPostsByUser, selectUserSlice } from '../../users-slice';
+import PostCard from '../../../../posts/components/PostCard/PostCard';
+import { UserPostsContainer } from './user-posts-styled';
 
-const PostCardList = () => {
+interface UserPostsProps {
+  userId: string;
+}
+
+const UserPosts: FC<UserPostsProps> = ({ userId }) => {
   const dispatch = useAppDispatch();
-  const { posts, postsCount, postGetStatus, postGetMsg } =
-    useAppSelector(selectPostsSlice);
+  const { userPosts, userPostsCount, getUserPostsStatus } =
+    useAppSelector(selectUserSlice);
 
   useEffect(() => {
-    dispatch(resetPosts());
-    dispatch(getAllPosts({ offset: 0, limit: 4 }));
-  }, [dispatch]);
+    dispatch(getPostsByUser({ userId: userId, offset: 0, limit: 4 }));
+  }, [dispatch, userId]);
 
   // Due to how jsdom works, there is no current way to cover the infinite scroll "next" function with Jest.
   // Cypress E2E test must be written to test and cover it.
   /* istanbul ignore next */
   const handleScroll = () => {
-    dispatch(getAllPosts({ offset: posts.length, limit: 4 }));
+    dispatch(
+      getPostsByUser({ userId: userId, offset: userPosts.length, limit: 4 })
+    );
   };
 
   const postsListContent = () => {
-    switch (postGetStatus) {
+    switch (getUserPostsStatus) {
       case 'success':
         return (
           <InfiniteScroll
             next={handleScroll}
-            dataLength={posts.length}
-            hasMore={posts.length < postsCount}
+            dataLength={userPosts.length}
+            hasMore={userPosts.length < userPostsCount}
             scrollThreshold={0.9}
             loader={<Spinner size={64} color={'tertiary'} />}
             endMessage={
@@ -41,7 +46,7 @@ const PostCardList = () => {
             }
           >
             <ul className="posts-list__list">
-              {posts.map((post) => (
+              {userPosts.map((post) => (
                 <li key={`post-${post._id}`}>
                   <PostCard post={post} />
                 </li>
@@ -50,7 +55,7 @@ const PostCardList = () => {
           </InfiniteScroll>
         );
       case 'error':
-        return <p>Error loading posts. ({postGetMsg})</p>;
+        return <p>Error loading user posts ({getUserPostsStatus}).</p>;
       default:
         return (
           <>
@@ -61,9 +66,9 @@ const PostCardList = () => {
   };
   return (
     <>
-      <PostCardListContainer>{postsListContent()}</PostCardListContainer>
+      <UserPostsContainer>{postsListContent()}</UserPostsContainer>
     </>
   );
 };
 
-export default PostCardList;
+export default UserPosts;

@@ -1,4 +1,4 @@
-import { fireEvent, screen, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { errorHandlers } from '../../../../mocks/handlers';
 import { server } from '../../../../mocks/server';
@@ -11,8 +11,8 @@ afterAll(() => server.close());
 
 describe('Given a posts card list component', () => {
   describe('When the page renders and there are no posts to get', () => {
-    server.use(...errorHandlers);
     test('Then the response should be an error', async () => {
+      server.use(...errorHandlers);
       renderWithProviders(
         <MemoryRouter>
           <PostCardList />
@@ -23,9 +23,12 @@ describe('Given a posts card list component', () => {
         await screen.findAllByRole('listitem');
       } catch {}
 
+      const nullPosts = screen.queryByRole('listitem');
       await waitFor(() => {
-        expect(screen.queryByRole('listitem')).toBe(null);
+        expect(nullPosts).toBe(null);
       });
+
+      expect(screen.getByText(/Error loading posts/i)).toBeInTheDocument();
     });
   });
 
@@ -41,24 +44,6 @@ describe('Given a posts card list component', () => {
 
       await waitFor(() => {
         expect(cardsList[0]).toBeInTheDocument();
-      });
-    });
-  });
-
-  describe('When the user scrolls to see more posts', () => {
-    test('Then more posts should load', async () => {
-      renderWithProviders(
-        <MemoryRouter>
-          <PostCardList />
-        </MemoryRouter>
-      );
-
-      expect(screen.getByTestId('spinner')).toBeInTheDocument();
-      // expect(await screen.findAllByRole('listitem')).toHaveLength(4);
-
-      await fireEvent.scroll(window, { EventTarget: { scrollY: 1000 } });
-      await waitFor(() => {
-        expect(screen.getAllByRole('listitem')).toHaveLength(12);
       });
     });
   });

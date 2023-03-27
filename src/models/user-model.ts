@@ -17,3 +17,22 @@ export interface User {
 }
 
 export type UserCredentials = Pick<User, 'email' | 'password'>;
+
+export interface UserProfile
+  extends Omit<User, 'followers' | 'following' | 'posts'> {
+  followersCount: number;
+  followingCount: number;
+}
+
+export interface UserProfileResponse {
+  msg: string;
+  user: User;
+  userFollowersCount: number;
+  userFollowingCount: number;
+}
+
+export interface UserPostsResponse {
+  msg: string;
+  posts: Post[];
+  count: number;
+}

@@ -38,14 +38,19 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
     }
   };
 
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    dispatch(createNewPost(e.currentTarget));
+    dispatch(uploadFile(''));
+    e.currentTarget.reset();
+  };
+
   return (
     <>
       <PostFormContainer
         data-testid="posts-form"
         onSubmit={(e) => {
           e.preventDefault();
-          dispatch(createNewPost(e.currentTarget));
-          e.currentTarget.reset();
+          handleFormSubmit(e);
         }}
       >
         <>

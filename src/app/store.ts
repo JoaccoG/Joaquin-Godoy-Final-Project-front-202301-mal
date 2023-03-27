@@ -7,17 +7,20 @@ import {
 } from '@reduxjs/toolkit';
 import authReducer from '../features/user/auth/auth-slice';
 import postsReducer from '../features/posts/posts-slice';
+import usersSlice from '../features/user/users/users-slice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     posts: postsReducer,
+    users: usersSlice,
   },
 });
 
 const rootReducers = combineReducers({
   auth: authReducer,
   posts: postsReducer,
+  users: usersSlice,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {

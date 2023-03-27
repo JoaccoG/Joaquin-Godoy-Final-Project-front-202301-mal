@@ -1,22 +1,41 @@
 import { Post } from '../models/post-model';
+import { User } from '../models/user-model';
+
+export const mockedUsers: User[] = [
+  {
+    _id: 'user-1',
+    email: 'user-1@test.com',
+    password: 'password-1',
+    username: 'user-1',
+    name: 'User 1',
+    surname: 'Surname 1',
+    avatar: 'Avatar 1',
+    biography: 'Bio 1',
+    favGames: [],
+    followers: [],
+    following: [],
+    posts: [],
+  },
+  {
+    _id: 'user-2',
+    email: 'user-2@test.com',
+    password: 'password-2',
+    username: 'user-2',
+    name: 'User 2',
+    surname: 'Surname 2',
+    avatar: 'Avatar 2',
+    biography: 'Bio 2',
+    favGames: [],
+    followers: [],
+    following: [],
+    posts: [],
+  },
+];
 
 export const mockedPosts: Post[] = [
   {
     _id: 'post-1',
-    user: {
-      _id: 'user-1',
-      email: 'user-1@email.com',
-      password: 'user-1',
-      username: 'user-1',
-      name: 'User 1',
-      surname: 'Surname 1',
-      avatar: '',
-      biography: '',
-      favGames: [],
-      followers: [],
-      following: [],
-      posts: [],
-    },
+    user: mockedUsers[0],
     game: {
       _id: 'game-1',
       name: 'Game 1',
@@ -36,20 +55,7 @@ export const mockedPosts: Post[] = [
   },
   {
     _id: 'post-2',
-    user: {
-      _id: 'user-2',
-      email: 'user-2@email.com',
-      password: 'user-2',
-      username: 'user-2',
-      name: 'User 2',
-      surname: 'Surname 2',
-      avatar: '',
-      biography: '',
-      favGames: [],
-      followers: [],
-      following: [],
-      posts: [],
-    },
+    user: mockedUsers[1],
     game: {
       _id: 'game-2',
       name: 'Game 2',
