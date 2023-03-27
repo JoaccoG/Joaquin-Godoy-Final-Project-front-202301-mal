@@ -113,4 +113,28 @@ export const errorHandlers = [
       );
     }
   ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          msg: 'Error while fetching data',
+        })
+      );
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/posts`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          msg: 'Error while fetching posts',
+        })
+      );
+    }
+  ),
 ];
