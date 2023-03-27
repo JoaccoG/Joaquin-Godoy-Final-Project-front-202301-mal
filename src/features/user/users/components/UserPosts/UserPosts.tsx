@@ -1,18 +1,19 @@
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Loading/Loading';
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import { getPostsByUser, selectUserSlice } from '../../users-slice';
-import { useParams } from 'react-router-dom';
 import PostCard from '../../../../posts/components/PostCard/PostCard';
 import { UserPostsContainer } from './user-posts-styled';
 
-const UserPosts = () => {
+interface UserPostsProps {
+  userId: string;
+}
+
+const UserPosts: FC<UserPostsProps> = ({ userId }) => {
   const dispatch = useAppDispatch();
   const { userPosts, userPostsCount, getUserPostsStatus } =
     useAppSelector(selectUserSlice);
-  const { id } = useParams();
-  const userId = id ?? '';
 
   useEffect(() => {
     dispatch(getPostsByUser({ userId: userId, offset: 0, limit: 4 }));
