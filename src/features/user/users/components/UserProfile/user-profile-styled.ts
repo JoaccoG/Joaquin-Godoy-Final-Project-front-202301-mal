@@ -236,13 +236,23 @@ export const UserProfileContainer = styled.article`
         }
       }
     }
+    .user-profile__info {
+      gap: var(--margin-xl);
+      .profile-info__stats {
+        justify-content: center;
+        gap: var(--margin-xxxl);
+      }
+      .profile-info__fav-games {
+        margin: 0;
+      }
+    }
   }
 
   @media screen and (min-width: 1440px) {
     .user-profile__avatar {
-      width: 100%;
       height: calc(400px - var(--padding-l));
       .hero-container__avatar {
+        width: 400px;
         height: 400px;
       }
     }
@@ -267,6 +277,7 @@ export const UserProfileContainer = styled.article`
       gap: var(--margin-xl);
       margin: var(--margin-xl) 0;
       .profile-info__bio {
+        width: 80%;
         p {
           font-size: var(--font-size-l);
         }
