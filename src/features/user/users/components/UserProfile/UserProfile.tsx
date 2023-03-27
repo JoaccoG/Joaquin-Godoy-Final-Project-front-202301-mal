@@ -34,7 +34,7 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
             <section className="user-profile__credentials">
               <div className="profile-hero__container">
                 <div className="hero-container__buttons">
-                  {sessionStorage.getItem('user') === user._id ? (
+                  {sessionStorage.getItem('user') === userId ? (
                     <button type="button">Edit profile</button>
                   ) : (
                     <>
@@ -86,7 +86,7 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
             <section className="user-profile__posts">
               <h2>Posts</h2>
               <div className="profile-posts__container">
-                <UserPosts />
+                <UserPosts userId={userId} />
               </div>
             </section>
           </UserProfileContainer>
