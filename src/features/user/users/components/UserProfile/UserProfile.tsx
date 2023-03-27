@@ -1,12 +1,23 @@
-import { useAppSelector } from '../../../../../app/hooks';
+import { FC, useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Loading/Loading';
-import { selectUserSlice } from '../../users-slice';
+import { getOneUser, resetStates, selectUserSlice } from '../../users-slice';
 import UserPosts from '../UserPosts/UserPosts';
 import { UserProfileContainer } from './user-profile-styled';
 
-const UserProfile = () => {
+interface UserProfileProps {
+  userId: string;
+}
+
+const UserProfile: FC<UserProfileProps> = ({ userId }) => {
+  const dispatch = useAppDispatch();
   const { user, getOneUserStatus, userPostsCount } =
     useAppSelector(selectUserSlice);
+
+  useEffect(() => {
+    dispatch(resetStates());
+    dispatch(getOneUser(userId));
+  }, [dispatch, userId]);
 
   const profileStatus = () => {
     switch (getOneUserStatus) {
@@ -81,9 +92,9 @@ const UserProfile = () => {
           </UserProfileContainer>
         );
       case 'error':
-        return <p>Error while getting user data!</p>;
+        return <p>Unexpected error while getting user data</p>;
       default:
-        return <Spinner size={150} color={'tertiary'} />;
+        return <Spinner size={200} color={'tertiary'} />;
     }
   };
 
