@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import { mockedPosts } from './data';
+import { mockedPosts, mockedUsers } from './data';
 
 export const handlers = [
   rest.get(
@@ -56,6 +56,35 @@ export const handlers = [
         ctx.json({
           msg: 'Post successfully deleted',
           post: mockedPosts[0]._id,
+        })
+      );
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          msg: 'Successfully fetched user data',
+          user: mockedUsers[0],
+          followersCount: 4,
+          followingCount: 2,
+        })
+      );
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/posts`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          msg: 'Successfully fetched user posts',
+          posts: mockedPosts,
+          postsCount: 2,
         })
       );
     }
