@@ -1,7 +1,12 @@
 import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Loading/Loading';
-import { getOneUser, resetStates, selectUserSlice } from '../../users-slice';
+import {
+  getOneUser,
+  getPostsByUser,
+  resetStates,
+  selectUserSlice,
+} from '../../users-slice';
 import UserPosts from '../UserPosts/UserPosts';
 import { UserProfileContainer } from './user-profile-styled';
 
@@ -11,12 +16,13 @@ interface UserProfileProps {
 
 const UserProfile: FC<UserProfileProps> = ({ userId }) => {
   const dispatch = useAppDispatch();
-  const { user, getOneUserStatus, userPostsCount } =
+  const { user, userPosts, getOneUserStatus, userPostsCount } =
     useAppSelector(selectUserSlice);
 
   useEffect(() => {
     dispatch(resetStates());
     dispatch(getOneUser(userId));
+    dispatch(getPostsByUser({ userId: userId, offset: 0, limit: 4 }));
   }, [dispatch, userId]);
 
   const profileStatus = () => {
@@ -86,7 +92,7 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
             <section className="user-profile__posts">
               <h2>Posts</h2>
               <div className="profile-posts__container">
-                <UserPosts userId={userId} />
+                <UserPosts userId={userId} userPosts={userPosts} />
               </div>
             </section>
           </UserProfileContainer>
