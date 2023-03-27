@@ -210,17 +210,25 @@ export const UserProfileContainer = styled.article`
 
   @media screen and (min-width: 1024px) {
     .user-profile__avatar {
-      width: calc(100% + (var(--padding-l) * 2));
-      height: calc(300px - var(--padding-l));
-      position: relative;
-      top: -2rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: var(--margin-m);
       .hero-container__avatar {
-        height: 300px;
+        position: static;
+        width: 350px;
+        height: 350px;
+        border: 1px solid var(--color-tertiary);
+        border-radius: var(--border-xl);
       }
     }
     .user-profile__credentials {
       .profile-hero__container {
         margin-bottom: var(--margin-xxl);
+        .hero-container__buttons {
+          gap: 350px;
+        }
       }
       .profile-hero__credentials {
         span {
