@@ -12,18 +12,18 @@ import { getPostsByUserId, getUserById } from './users-api';
 interface UsersState {
   status: Status;
   user: UserProfile;
-  getOneUserStatus: RequestStatus;
   userPosts: Post[];
   userPostsCount: number;
+  getOneUserStatus: RequestStatus;
   getUserPostsStatus: RequestStatus;
 }
 
 const initialState: UsersState = {
   status: 'idle',
   user: {} as UserProfile,
-  getOneUserStatus: 'idle',
   userPosts: [],
   userPostsCount: 0,
+  getOneUserStatus: 'idle',
   getUserPostsStatus: 'idle',
 };
 
