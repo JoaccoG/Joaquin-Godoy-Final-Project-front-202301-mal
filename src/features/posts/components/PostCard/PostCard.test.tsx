@@ -1,12 +1,12 @@
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
+import { PreloadedState } from '@reduxjs/toolkit';
+import { RootState } from '../../../../app/store';
 import { mockedPosts } from '../../../../mocks/data';
 import { errorHandlers } from '../../../../mocks/handlers';
 import { server } from '../../../../mocks/server';
 import { renderWithProviders } from '../../../../mocks/utils';
-import { RequestStatus, Status } from '../../../../models/models';
-import { UserProfile } from '../../../../models/user-model';
 import PostCard from './PostCard';
 
 beforeAll(() => server.listen());
@@ -59,33 +59,11 @@ describe('Given a post card component', () => {
     server.use(...errorHandlers);
     sessionStorage.setItem('user', 'user-2');
     const preloadedState = {
-      auth: {
-        status: 'idle' as Status,
-        loginMsg: '',
-        loginStatus: 'idle' as RequestStatus,
-        registerMsg: '',
-        registerStatus: 'idle' as RequestStatus,
-      },
       posts: {
-        status: 'idle' as Status,
         posts: mockedPosts,
         postsCount: mockedPosts.length,
-        postCreationStatus: 'idle' as RequestStatus,
-        postCreationMsg: '',
-        postGetStatus: 'idle' as RequestStatus,
-        postGetMsg: '',
-        filePreview: '',
       },
-      users: {
-        status: 'idle' as Status,
-        user: {} as UserProfile,
-        getOneUserStatus: 'idle' as RequestStatus,
-        userPosts: [],
-        userPostsCount: 0,
-        getUserPostsStatus: 'idle' as RequestStatus,
-      },
-    };
-
+    } as unknown as PreloadedState<RootState>;
     renderWithProviders(
       <MemoryRouter>
         <PostCard post={mockedPosts[1]} />

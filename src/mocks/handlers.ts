@@ -89,6 +89,40 @@ export const handlers = [
       );
     }
   ),
+
+  rest.post(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
+    async (_req, res, ctx) => {
+      if (sessionStorage.getItem('user') === 'asd123') {
+        return res(
+          ctx.status(409),
+          ctx.json({ msg: 'You cannot follow yourself' })
+        );
+      }
+
+      return res(
+        ctx.status(200),
+        ctx.json({ msg: 'Successfully followed user' })
+      );
+    }
+  ),
+
+  rest.delete(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
+    async (_req, res, ctx) => {
+      if (sessionStorage.getItem('user') === 'asd1234') {
+        return res(
+          ctx.status(409),
+          ctx.json({ msg: 'You cannot unfollow yourself' })
+        );
+      }
+
+      return res(
+        ctx.status(200),
+        ctx.json({ msg: 'Successfully unfollowed user' })
+      );
+    }
+  ),
 ];
 
 export const errorHandlers = [

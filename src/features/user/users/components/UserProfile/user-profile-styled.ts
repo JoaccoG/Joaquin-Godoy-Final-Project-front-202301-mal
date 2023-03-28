@@ -44,7 +44,8 @@ export const UserProfileContainer = styled.article`
         bottom: -60px;
         button {
           z-index: 2;
-          padding: var(--padding-xs) var(--padding-l);
+          width: 210px;
+          min-height: 64px;
           font-size: var(--font-size-s);
           font-family: var(--font-family-inter-bold);
           color: var(--color-primary);
@@ -227,7 +228,7 @@ export const UserProfileContainer = styled.article`
       .profile-hero__container {
         margin-bottom: var(--margin-xxl);
         .hero-container__buttons {
-          gap: 350px;
+          gap: var(--margin-xxl);
         }
       }
       .profile-hero__credentials {
