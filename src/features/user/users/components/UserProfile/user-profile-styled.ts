@@ -260,7 +260,9 @@ export const UserProfileContainer = styled.article`
     .user-profile__credentials {
       .profile-hero__container {
         .hero-container__buttons {
+          gap: var(--margin-xxxl);
           button {
+            width: 260px;
             padding: var(--padding-m) var(--padding-xxl);
           }
         }

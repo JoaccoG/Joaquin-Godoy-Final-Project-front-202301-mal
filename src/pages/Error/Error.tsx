@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Main } from './error-styled';
 
-const Error = () => {
+const ErrorsPage = () => {
   return (
     <Main>
       <div className="error__text">
@@ -21,4 +21,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default ErrorsPage;
