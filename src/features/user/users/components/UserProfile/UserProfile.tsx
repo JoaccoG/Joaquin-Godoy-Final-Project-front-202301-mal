@@ -61,6 +61,7 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
                     <>
                       <button
                         type="button"
+                        data-testid="follow-btn"
                         onClick={() => handleFollows()}
                         disabled={followUserStatus === 'loading'}
                       >
@@ -88,17 +89,17 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
               </div>
               <div className="profile-info__stats">
                 <div className="stats__counter">
-                  <p>{user.followersCount}</p>
+                  <p>{String(user.followersCount)}</p>
                   <span>Followers</span>
                 </div>
                 <div className="stats__separator"></div>
                 <div className="stats__counter">
-                  <p>{userPostsCount}</p>
+                  <p>{String(userPostsCount)}</p>
                   <span>Posts</span>
                 </div>
                 <div className="stats__separator"></div>
                 <div className="stats__counter">
-                  <p>{user.followingCount}</p>
+                  <p>{String(user.followingCount)}</p>
                   <span>Following</span>
                 </div>
               </div>
