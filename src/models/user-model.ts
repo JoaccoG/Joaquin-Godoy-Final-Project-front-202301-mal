@@ -22,6 +22,7 @@ export interface UserProfile
   extends Omit<User, 'followers' | 'following' | 'posts'> {
   followersCount: number;
   followingCount: number;
+  isFollower: boolean;
 }
 
 export interface UserProfileResponse {
@@ -29,10 +30,23 @@ export interface UserProfileResponse {
   user: User;
   userFollowersCount: number;
   userFollowingCount: number;
+  isFollower: boolean;
 }
 
 export interface UserPostsResponse {
   msg: string;
   posts: Post[];
   count: number;
+}
+
+export interface UserAddFollowerResponse {
+  msg: string;
+  newFollower: string;
+  newFollowing: string;
+}
+
+export interface UserRemoveFollowerResponse {
+  msg: string;
+  removedFollower: string;
+  removedFollowing: string;
 }
