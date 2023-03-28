@@ -2,8 +2,10 @@ import { FC, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../../app/hooks';
 import Spinner from '../../../../../shared/Loading/Loading';
 import {
+  addUserFollower,
   getOneUser,
   getPostsByUser,
+  removeUserFollower,
   resetStates,
   selectUserSlice,
 } from '../../users-slice';
@@ -16,14 +18,27 @@ interface UserProfileProps {
 
 const UserProfile: FC<UserProfileProps> = ({ userId }) => {
   const dispatch = useAppDispatch();
-  const { user, userPosts, getOneUserStatus, userPostsCount } =
-    useAppSelector(selectUserSlice);
+  const {
+    user,
+    userPosts,
+    getOneUserStatus,
+    userPostsCount,
+    followUserStatus,
+  } = useAppSelector(selectUserSlice);
 
   useEffect(() => {
     dispatch(resetStates());
     dispatch(getOneUser(userId));
     dispatch(getPostsByUser({ userId: userId, offset: 0, limit: 4 }));
   }, [dispatch, userId]);
+
+  const handleFollows = () => {
+    if (user.isFollower) {
+      dispatch(removeUserFollower(userId));
+    } else {
+      dispatch(addUserFollower(userId));
+    }
+  };
 
   const profileStatus = () => {
     switch (getOneUserStatus) {
@@ -44,7 +59,17 @@ const UserProfile: FC<UserProfileProps> = ({ userId }) => {
                     <button type="button">Edit profile</button>
                   ) : (
                     <>
-                      <button type="button">Follow</button>
+                      <button
+                        type="button"
+                        onClick={() => handleFollows()}
+                        disabled={followUserStatus === 'loading'}
+                      >
+                        {followUserStatus === 'loading' ? (
+                          <Spinner size={32} color="primary" />
+                        ) : (
+                          <>{user.isFollower ? 'Unfollow' : 'Follow'}</>
+                        )}
+                      </button>
                       <button type="button">Message</button>
                     </>
                   )}
