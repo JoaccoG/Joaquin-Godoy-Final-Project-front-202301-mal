@@ -3,11 +3,18 @@ import { RootState } from '../../../app/store';
 import { RequestStatus, Status } from '../../../models/models';
 import { Post } from '../../../models/post-model';
 import {
+  UserAddFollowerResponse,
   UserPostsResponse,
   UserProfile,
   UserProfileResponse,
+  UserRemoveFollowerResponse,
 } from '../../../models/user-model';
-import { getPostsByUserId, getUserById } from './users-api';
+import {
+  addFollower,
+  getPostsByUserId,
+  getUserById,
+  removeFollower,
+} from './users-api';
 
 interface UsersState {
   status: Status;
@@ -16,6 +23,7 @@ interface UsersState {
   userPostsCount: number;
   getOneUserStatus: RequestStatus;
   getUserPostsStatus: RequestStatus;
+  followUserStatus: RequestStatus;
 }
 
 const initialState: UsersState = {
@@ -25,6 +33,7 @@ const initialState: UsersState = {
   userPostsCount: 0,
   getOneUserStatus: 'idle',
   getUserPostsStatus: 'idle',
+  followUserStatus: 'idle',
 };
 
 export const getOneUser = createAsyncThunk(
@@ -41,6 +50,7 @@ export const getOneUser = createAsyncThunk(
       ...data.user,
       followersCount: data.userFollowersCount,
       followingCount: data.userFollowingCount,
+      isFollower: data.isFollower,
     };
   }
 );
@@ -67,6 +77,34 @@ export const getPostsByUser = createAsyncThunk(
   }
 );
 
+export const addUserFollower = createAsyncThunk(
+  'usersSlice/addUserFollower',
+  async (userId: string) => {
+    const apiRes = await addFollower(userId);
+    const data: UserAddFollowerResponse = await apiRes.json();
+
+    if (!apiRes.ok) {
+      throw new Error(data.msg);
+    }
+
+    return data;
+  }
+);
+
+export const removeUserFollower = createAsyncThunk(
+  'usersSlice/removeUserFollower',
+  async (userId: string) => {
+    const apiRes = await removeFollower(userId);
+    const data: UserRemoveFollowerResponse = await apiRes.json();
+
+    if (!apiRes.ok) {
+      throw new Error(data.msg);
+    }
+
+    return data;
+  }
+);
+
 export const usersSlice = createSlice({
   name: 'usersSlice',
   initialState,
@@ -75,6 +113,7 @@ export const usersSlice = createSlice({
       state.user = {} as UserProfile;
       state.userPosts = [];
       state.userPostsCount = 0;
+      state.followUserStatus = 'idle';
     },
   },
   extraReducers: (builder) => {
@@ -88,8 +127,8 @@ export const usersSlice = createSlice({
         getOneUser.fulfilled,
         (state, action: PayloadAction<UserProfile>) => {
           state.status = 'idle';
-          state.user = action.payload;
           state.getOneUserStatus = 'success';
+          state.user = action.payload;
         }
       )
       .addCase(getOneUser.rejected, (state) => {
@@ -113,6 +152,38 @@ export const usersSlice = createSlice({
       .addCase(getPostsByUser.rejected, (state) => {
         state.status = 'failed';
         state.getUserPostsStatus = 'error';
+      })
+
+      // Add user follower cases
+      .addCase(addUserFollower.pending, (state) => {
+        state.status = 'loading';
+        state.followUserStatus = 'loading';
+      })
+      .addCase(addUserFollower.fulfilled, (state) => {
+        state.status = 'idle';
+        state.followUserStatus = 'success';
+        state.user.followersCount++;
+        state.user.isFollower = true;
+      })
+      .addCase(addUserFollower.rejected, (state) => {
+        state.status = 'failed';
+        state.followUserStatus = 'error';
+      })
+
+      // Remove user follower cases
+      .addCase(removeUserFollower.pending, (state) => {
+        state.status = 'loading';
+        state.followUserStatus = 'loading';
+      })
+      .addCase(removeUserFollower.fulfilled, (state) => {
+        state.status = 'idle';
+        state.followUserStatus = 'success';
+        state.user.followersCount--;
+        state.user.isFollower = false;
+      })
+      .addCase(removeUserFollower.rejected, (state) => {
+        state.status = 'failed';
+        state.followUserStatus = 'error';
       });
   },
 });
