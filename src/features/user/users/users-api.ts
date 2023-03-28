@@ -29,3 +29,33 @@ export const getPostsByUserId = async (
 
   return response;
 };
+
+export const addFollower = async (userId: string) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/${userId}/followers`,
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  return response;
+};
+
+export const removeFollower = async (userId: string) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_API_URL}/api/v1/users/${userId}/followers`,
+    {
+      method: 'DELETE',
+      headers: {
+        Authorization: `Bearer ${sessionStorage.getItem('accessToken')}`,
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  return response;
+};
