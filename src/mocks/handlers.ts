@@ -93,6 +93,13 @@ export const handlers = [
   rest.post(
     `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
     async (_req, res, ctx) => {
+      if (sessionStorage.getItem('user') === 'asd123') {
+        return res(
+          ctx.status(409),
+          ctx.json({ msg: 'You cannot follow yourself' })
+        );
+      }
+
       return res(
         ctx.status(200),
         ctx.json({ msg: 'Successfully followed user' })
@@ -103,6 +110,13 @@ export const handlers = [
   rest.delete(
     `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
     async (_req, res, ctx) => {
+      if (sessionStorage.getItem('user') === 'asd1234') {
+        return res(
+          ctx.status(409),
+          ctx.json({ msg: 'You cannot unfollow yourself' })
+        );
+      }
+
       return res(
         ctx.status(200),
         ctx.json({ msg: 'Successfully unfollowed user' })
@@ -155,92 +169,6 @@ export const errorHandlers = [
           msg: 'Error while fetching posts',
         })
       );
-    }
-  ),
-];
-
-export const followHandlers = [
-  rest.get(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234`,
-    async (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          msg: 'Successfully fetched user data',
-          user: mockedUsers[0],
-          followersCount: 4,
-          followingCount: 2,
-        })
-      );
-    }
-  ),
-
-  rest.get(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/posts`,
-    async (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          msg: 'Successfully fetched user posts',
-          posts: mockedPosts,
-          postsCount: 2,
-        })
-      );
-    }
-  ),
-
-  rest.post(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
-    async (_req, res, ctx) => {
-      return res(ctx.status(500), ctx.json({ msg: 'Unexpected error' }));
-    }
-  ),
-];
-
-export const unfollowHandlers = [
-  rest.get(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234`,
-    async (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          msg: 'Successfully fetched user data',
-          user: mockedUsers[0],
-          followersCount: 4,
-          followingCount: 2,
-        })
-      );
-    }
-  ),
-
-  rest.get(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/posts`,
-    async (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({
-          msg: 'Successfully fetched user posts',
-          posts: mockedPosts,
-          postsCount: 2,
-        })
-      );
-    }
-  ),
-
-  rest.post(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
-    async (_req, res, ctx) => {
-      return res(
-        ctx.status(200),
-        ctx.json({ msg: 'Successfully followed user' })
-      );
-    }
-  ),
-
-  rest.delete(
-    `${process.env.REACT_APP_API_URL}/api/v1/users/1234/followers`,
-    async (_req, res, ctx) => {
-      return res(ctx.status(500), ctx.json({ msg: 'Unexpected error' }));
     }
   ),
 ];

@@ -1,10 +1,6 @@
 import { fireEvent, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import {
-  errorHandlers,
-  followHandlers,
-  unfollowHandlers,
-} from '../../../../../mocks/handlers';
+import { errorHandlers } from '../../../../../mocks/handlers';
 import { server } from '../../../../../mocks/server';
 import { renderWithProviders } from '../../../../../mocks/utils';
 import UserProfile from './UserProfile';
@@ -78,8 +74,7 @@ describe('Given a user profile component', () => {
     });
 
     test('But there is an error on the following api call, then it should throw an error', async () => {
-      server.use(...followHandlers);
-      sessionStorage.setItem('user', '4321');
+      sessionStorage.setItem('user', 'asd123');
       renderWithProviders(
         <MemoryRouter>
           <UserProfile userId={'1234'} />
@@ -95,8 +90,7 @@ describe('Given a user profile component', () => {
     });
 
     test('But there is an error on the unfollowing api call, then it should throw an error', async () => {
-      server.use(...unfollowHandlers);
-      sessionStorage.setItem('user', '4321');
+      sessionStorage.setItem('user', 'asd1234');
       renderWithProviders(
         <MemoryRouter>
           <UserProfile userId={'1234'} />
