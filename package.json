@@ -55,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "cypress": "^12.9.0",
     "husky": "^8.0.0",
     "jest-styled-components": "^7.1.1",
     "msw": "^1.1.0",
