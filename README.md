@@ -37,8 +37,6 @@
 
 <img align="center" src="/public/assets/img/demo.png">
 
-![screenshot](/public/assets/img/demo.png)
-
 ## About
 
 This is my final project of the Full Stack Bootcamp at ISDI Coders and focuses on the development of a comprehensive web application that incorporates authentication functionality, as well as a complete data management system based on the CRUD concept. Additionally, the project also involves the implementation of a robust architecture for handling application states and interconnecting all it's entities.<br>
