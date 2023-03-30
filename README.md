@@ -95,6 +95,7 @@ I would like to thank the following people for their help and support during my 
 1. My professor and mentor [Alex Gonzalez](https://github.com/agonsant), who teached me all I know about programming.
 2. My assistant teachers [Diego Guzman](https://github.com/TheGuzman) and [Natalia Gherardi](https://github.com/natigherardi), who helped me all along.
 3. My friend and rubber ducking partner [Clara Marsango](https://github.com/claramarsango) for all the days and nights we spent together thinking, coding and debugging.
+4. My supportive friend [Lorena Anaya](https://github.com/LorenaAnayaDiaz) for all the support and encouragement she gave me.
 
 And to all the people who supported me. Thank you!
 
