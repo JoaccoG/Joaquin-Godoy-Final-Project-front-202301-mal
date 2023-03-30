@@ -31,7 +31,7 @@
   <a href="#stack">Stack</a> •
   <a href="#sonarcloud">SonarCloud</a> •
   <a href="#demo">Demo</a> •
-  <a href="#features">Features</a> •
+  <a href="#special-thanks">Special Thanks</a> •
   <a href="#license">License</a>
 </p>
 
@@ -59,17 +59,17 @@ The chosen theme for this project is a social network that caters to the gaming 
 
 ## Stack
 
-> **Frontend** <br> > ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) > ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) > ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) > ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) > ![Styled-Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+> **Frontend** <br> ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) ![Redux](https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white) ![Styled-Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
-> **Backend** <br> > ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) > ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) > ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) > ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white) > ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
+> **Backend** <br> ![NodeJS](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white) ![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white) ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white)
 
-> **Testing and tools** <br> > ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white) > ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white) > ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white) > ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E) > ![SonarLint](https://img.shields.io/badge/SonarLint-CB2029?style=for-the-badge&logo=sonarlint&logoColor=white) > ![Lighthouse](https://img.shields.io/badge/Lighthouse-F44B21?style=for-the-badge&logo=Lighthouse&logoColor=white)
+> **Testing and tools** <br> ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white) ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white) ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E) ![SonarLint](https://img.shields.io/badge/SonarLint-CB2029?style=for-the-badge&logo=sonarlint&logoColor=white) ![Lighthouse](https://img.shields.io/badge/Lighthouse-F44B21?style=for-the-badge&logo=Lighthouse&logoColor=white)
 
 ## SonarCloud
 
 One of the biggest milestones achieved in this project was the development of high quality code, always prioritising Clean Code with its respective tests over the creation of thousands of features with spaghetti code that, in the long term, result unscalable and end up degenerating the application.<br>
 In order to always maintain this good practices, different tools were used, among the most important of which is SonarCloud.<br>
-It is in charge of analysing the code in each Pull Request and giving feedback about what can be improved or alert me if something does not meet the Clean Code and good practices standards.<br>
+It is in charge of analysing the code in each Pull Request and giving feedback about what can be improved or alert me if something does not meet the Clean Code and good practices standards.<br><br>
 Here are the (real-time) badges with the end result of SonarCloud scans:<br><br>
 ![SonarCloud](https://img.shields.io/badge/Sonar%20cloud-F3702A?style=for-the-badge&logo=sonarcloud&logoColor=white)<br>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Joaquin-Godoy-Final-Project-front-202301-mal&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Joaquin-Godoy-Final-Project-front-202301-mal)
@@ -86,36 +86,26 @@ Here are the (real-time) badges with the end result of SonarCloud scans:<br><br>
 
 ## Demo
 
-<a href="https://www.linkedin.com/in/joaquin--godoy/" target="_blank">
+<a href="https://joaquin-godoy-final-project-202301.netlify.app/" target="_blank">
       You can see a full demo clicking on this text, which will redirect you to a Netlify deploy!
 </a>
 
-## Related
+## Special thanks
 
-[markdownify-web](https://github.com/amitmerchant1990/markdownify-web) - Web version of Markdownify
+I would like to thank the following people for their help and support during my journey through the ISDI Coders Bootcamp:
 
-## Support
+1. My professor and mentor [Alex Gonzalez](https://github.com/agonsant), who teached me all I know about programming.
+2. My assistant teachers [Diego Guzman](https://github.com/TheGuzman) and [Natalia Gherardi](https://github.com/natigherardi), who helped me all along.
+3. My friend and rubber ducking partner [Clara Marsango](https://github.com/claramarsango) for all the days and nights we spent together thinking, coding and debugging.
 
-<a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
-
-<p>Or</p>
-
-<a href="https://www.patreon.com/amitmerchant">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
-## Links of interest
-
-- [Figma]() - Figma design
-- [SonarCloud](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+And to all the people who supported me. Thank you!
 
 ## License
 
-MIT
+[MIT License](/LICENSE) - Copyright © 2023 [Joaquin Godoy](https://www.joaquingodoy.com)
 
 ---
 
-> Portfolio [@portfolio](https://www.joaquingodoy.com) &nbsp;&middot;&nbsp;
-> GitHub [@github](https://github.com/joaccog) &nbsp;&middot;&nbsp;
-> Twitter [@twitter](https://twitter.com/joaccodev)
+> Check out my [Portfolio](https://www.joaquingodoy.com) &nbsp;&middot;&nbsp;
+> See my projects on [GitHub](https://github.com/joaccog) &nbsp;&middot;&nbsp;
+> Follow me on [Twitter](https://twitter.com/joaccodev)
