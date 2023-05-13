@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://joaquin-godoy-final-project-202301.netlify.app/"><img src="https://user-images.githubusercontent.com/62773100/228865537-223776f0-db14-4d58-9486-0b7674008fde.svg" alt="PlayersNation" width="400"></a>
+  <a href="https://players-nation.netlify.app/"><img src="https://user-images.githubusercontent.com/62773100/228865537-223776f0-db14-4d58-9486-0b7674008fde.svg" alt="PlayersNation" width="400"></a>
 </h1>
 <h4 align="center">Full Stack Development Bootcamp - Final Project</h4>
 
