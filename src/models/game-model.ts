@@ -12,3 +12,9 @@ export interface Game {
   tags: string[];
   posts: Post[];
 }
+
+export interface GamesGetResponse {
+  msg: string;
+  count: number;
+  games: Pick<Game, '_id' | 'name' | 'banner'>[];
+}
