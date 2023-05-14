@@ -74,3 +74,16 @@ export const mockedPosts: Post[] = [
     date: 1234567890,
   },
 ];
+
+export const mockedGames = [
+  {
+    _id: 'game-1',
+    name: 'Game 1',
+    banner: '',
+  },
+  {
+    _id: 'game-2',
+    name: 'Game 2',
+    banner: '',
+  },
+];
