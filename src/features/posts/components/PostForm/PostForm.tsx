@@ -1,6 +1,11 @@
 import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import { PostFormContainer, PostFormFeedback } from './post-form-styled';
-import { createNewPost, selectPostsSlice, uploadFile } from '../../posts-slice';
+import {
+  createNewPost,
+  resetPostCreationStatus,
+  selectPostsSlice,
+  uploadFile,
+} from '../../posts-slice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { FC } from 'react';
@@ -42,6 +47,9 @@ const PostForm: FC<PostFormProps> = ({ games }) => {
     dispatch(createNewPost(e.currentTarget));
     dispatch(uploadFile(''));
     e.currentTarget.reset();
+    setTimeout(() => {
+      dispatch(resetPostCreationStatus());
+    }, 5000);
   };
 
   return (
