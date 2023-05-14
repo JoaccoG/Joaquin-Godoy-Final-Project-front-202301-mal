@@ -3,6 +3,7 @@ import { server } from '../../../../mocks/server';
 import PostForm from './PostForm';
 import userEvent from '@testing-library/user-event';
 import { renderWithProviders } from '../../../../mocks/utils';
+import { act } from 'react-dom/test-utils';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
@@ -27,7 +28,7 @@ describe('Given a posts form component', () => {
         },
       });
       await waitFor(() => {
-        expect(screen.getByText(/test/i)).toBeInTheDocument();
+        expect(screen.getByText(/test.png/i)).toBeInTheDocument();
       });
     });
   });
@@ -46,6 +47,7 @@ describe('Given a posts form component', () => {
           msg: 'Your post has been created!',
         }),
       });
+      jest.useFakeTimers();
       renderWithProviders(<PostForm games={['game-1', 'game-2']} />);
 
       userEvent.selectOptions(screen.getByTestId('game'), 'game-1');
@@ -55,8 +57,18 @@ describe('Given a posts form component', () => {
       userEvent.click(screen.getByRole('button'));
 
       await waitFor(() => {
-        expect(screen.getByText(/created/i)).toBeInTheDocument();
+        expect(
+          screen.getByText(/your post has been created/i)
+        ).toBeInTheDocument();
       });
+
+      act(() => {
+        jest.advanceTimersByTime(5000);
+      });
+      expect(
+        screen.queryByText(/your post has been created/i)
+      ).not.toBeInTheDocument();
+      expect(screen.getByText(/post something new/i)).toBeInTheDocument();
     });
 
     test('With wrong data, then it should be an error feedback message', async () => {
