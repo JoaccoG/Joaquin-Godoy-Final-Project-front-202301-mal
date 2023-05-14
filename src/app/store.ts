@@ -8,12 +8,14 @@ import {
 import authReducer from '../features/user/auth/auth-slice';
 import postsReducer from '../features/posts/posts-slice';
 import usersSlice from '../features/user/users/users-slice';
+import gamesSlice from '../features/games/games-slice';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     posts: postsReducer,
     users: usersSlice,
+    games: gamesSlice,
   },
 });
 
@@ -21,6 +23,7 @@ const rootReducers = combineReducers({
   auth: authReducer,
   posts: postsReducer,
   users: usersSlice,
+  games: gamesSlice,
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
