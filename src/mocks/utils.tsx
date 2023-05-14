@@ -52,6 +52,13 @@ export const renderWithProviders = (
         getUserPostsStatus: 'idle',
         followUserStatus: 'idle',
       },
+      games: {
+        status: 'idle',
+        games: [],
+        gamesCount: 0,
+        getGamesStatus: 'idle',
+        getGamesMsg: '',
+      },
     },
     store = setupStore(preloadedState),
     ...renderOptions
