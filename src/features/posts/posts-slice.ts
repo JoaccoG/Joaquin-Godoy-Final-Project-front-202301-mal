@@ -84,6 +84,8 @@ export const postsSlice = createSlice({
     resetPosts: (state) => {
       state.posts = [];
       state.postsCount = 0;
+      state.postGetMsg = '';
+      state.postGetStatus = 'idle';
     },
     resetPostCreationStatus: (state) => {
       state.postCreationStatus = 'idle';
