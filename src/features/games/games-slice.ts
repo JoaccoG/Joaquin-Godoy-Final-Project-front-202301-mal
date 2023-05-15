@@ -37,7 +37,14 @@ export const getAllGames = createAsyncThunk(
 export const gamesSlice = createSlice({
   name: 'gamesSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    resetGames: (state) => {
+      state.games = [];
+      state.gamesCount = 0;
+      state.getGamesStatus = 'idle';
+      state.getGamesMsg = '';
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllGames.pending, (state) => {
@@ -61,6 +68,7 @@ export const gamesSlice = createSlice({
   },
 });
 
-export const selectGames = (state: RootState) => state.games;
+export const selectGamesSlice = (state: RootState) => state.games;
+export const { resetGames } = gamesSlice.actions;
 
 export default gamesSlice.reducer;
