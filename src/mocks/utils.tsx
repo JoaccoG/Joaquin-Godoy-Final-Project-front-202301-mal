@@ -3,6 +3,7 @@ import { render, RenderOptions } from '@testing-library/react';
 import { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 import { AppStore, RootState, setupStore } from '../app/store';
+import { Game } from '../models/game-model';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
@@ -55,9 +56,12 @@ export const renderWithProviders = (
       games: {
         status: 'idle',
         games: [],
+        game: {} as Game,
         gamesCount: 0,
         getGamesStatus: 'idle',
+        getGameStatus: 'idle',
         getGamesMsg: '',
+        getGameMsg: '',
       },
     },
     store = setupStore(preloadedState),
