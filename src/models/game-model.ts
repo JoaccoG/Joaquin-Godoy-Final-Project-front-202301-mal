@@ -21,5 +21,5 @@ export interface GamesGetResponse {
 
 export interface GameGetResponse {
   msg: string;
-  game: Game;
+  gameData: Game;
 }
