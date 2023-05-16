@@ -5,11 +5,11 @@ export interface Game {
   name: string;
   banner: string;
   description: string;
-  launch: Date;
-  studio: string;
-  mode: string;
-  rating: number;
   tags: string[];
+  mode: 'singleplayer' | 'multiplayer';
+  studio: string;
+  launch: Date;
+  rating: number;
   posts: Post[];
 }
 
@@ -17,4 +17,9 @@ export interface GamesGetResponse {
   msg: string;
   count: number;
   games: Pick<Game, '_id' | 'name' | 'banner'>[];
+}
+
+export interface GameGetResponse {
+  msg: string;
+  game: Game;
 }
