@@ -1,23 +1,33 @@
 import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { Game, GamesGetResponse } from '../../models/game-model';
+import {
+  Game,
+  GameGetResponse,
+  GamesGetResponse,
+} from '../../models/game-model';
 import { RequestStatus, Status } from '../../models/models';
-import { getGames } from './games-api';
+import { getGameById, getGames } from './games-api';
 
 interface GamesState {
   status: Status;
+  game: Game;
   games: Pick<Game, '_id' | 'name' | 'banner'>[];
   gamesCount: number;
   getGamesMsg: string;
   getGamesStatus: RequestStatus;
+  getGameMsg: string;
+  getGameStatus: RequestStatus;
 }
 
 const initialState: GamesState = {
   status: 'idle',
+  game: {} as Game,
   games: [],
   gamesCount: 0,
   getGamesMsg: '',
   getGamesStatus: 'idle',
+  getGameMsg: '',
+  getGameStatus: 'idle',
 };
 
 export const getAllGames = createAsyncThunk(
@@ -25,6 +35,20 @@ export const getAllGames = createAsyncThunk(
   async ({ offset, limit }: { offset: number; limit: number }) => {
     const apiRes = await getGames(offset, limit);
     const data: GamesGetResponse = await apiRes.json();
+
+    if (!apiRes.ok) {
+      throw new Error(data.msg);
+    }
+
+    return data;
+  }
+);
+
+export const getOneGame = createAsyncThunk(
+  'gamesSlice/getOneGame',
+  async (gameId: string) => {
+    const apiRes = await getGameById(gameId);
+    const data: GameGetResponse = await apiRes.json();
 
     if (!apiRes.ok) {
       throw new Error(data.msg);
@@ -47,6 +71,7 @@ export const gamesSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      // Get all games cases
       .addCase(getAllGames.pending, (state) => {
         state.status = 'loading';
       })
@@ -61,9 +86,28 @@ export const gamesSlice = createSlice({
         }
       )
       .addCase(getAllGames.rejected, (state, action: any) => {
-        state.status = 'idle';
+        state.status = 'failed';
         state.getGamesStatus = 'error';
         state.getGamesMsg = action.error.message;
+      })
+
+      // Get one game cases
+      .addCase(getOneGame.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(
+        getOneGame.fulfilled,
+        (state, action: PayloadAction<GameGetResponse>) => {
+          state.status = 'idle';
+          state.getGameStatus = 'success';
+          state.getGameMsg = action.payload.msg;
+          state.game = action.payload.game;
+        }
+      )
+      .addCase(getOneGame.rejected, (state, action: any) => {
+        state.status = 'failed';
+        state.getGameStatus = 'error';
+        state.getGameMsg = action.error.message;
       });
   },
 });
