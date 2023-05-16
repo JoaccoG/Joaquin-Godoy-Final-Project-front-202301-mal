@@ -68,6 +68,11 @@ export const gamesSlice = createSlice({
       state.getGamesStatus = 'idle';
       state.getGamesMsg = '';
     },
+    resetGame: (state) => {
+      state.game = {} as Game;
+      state.getGameStatus = 'idle';
+      state.getGameMsg = '';
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -94,6 +99,7 @@ export const gamesSlice = createSlice({
       // Get one game cases
       .addCase(getOneGame.pending, (state) => {
         state.status = 'loading';
+        state.getGameStatus = 'loading';
       })
       .addCase(
         getOneGame.fulfilled,
@@ -101,7 +107,7 @@ export const gamesSlice = createSlice({
           state.status = 'idle';
           state.getGameStatus = 'success';
           state.getGameMsg = action.payload.msg;
-          state.game = action.payload.game;
+          state.game = action.payload.gameData;
         }
       )
       .addCase(getOneGame.rejected, (state, action: any) => {
@@ -113,6 +119,6 @@ export const gamesSlice = createSlice({
 });
 
 export const selectGamesSlice = (state: RootState) => state.games;
-export const { resetGames } = gamesSlice.actions;
+export const { resetGames, resetGame } = gamesSlice.actions;
 
 export default gamesSlice.reducer;
