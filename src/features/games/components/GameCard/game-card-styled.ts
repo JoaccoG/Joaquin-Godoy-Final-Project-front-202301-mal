@@ -42,6 +42,9 @@ export const GameCardContainer = styled.article<GameCardContainerProps>`
         background-color: var(--color-tertiary-hover);
         transform: translateY(-4px);
       }
+      a {
+        color: var(--color-primary);
+      }
     }
   }
 
