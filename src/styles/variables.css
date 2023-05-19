@@ -6,6 +6,7 @@
   --color-secondary-darker: hsl(231, 13%, 50%);
   --color-tertiary: hsl(14, 85%, 55%);
   --color-tertiary-hover: hsl(14, 98%, 68%);
+  --color-tertiary-opacity: hsla(14, 85%, 55%, 0.3);
   --color-success: hsl(120, 50%, 50%);
   --color-warning: hsl(60, 50%, 50%);
   --color-danger: hsl(0, 50%, 50%);
