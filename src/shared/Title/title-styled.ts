@@ -3,6 +3,7 @@ import styled from 'styled-components';
 interface TitleStyledProps {
   size: 'small' | 'large';
   color: 'primary' | 'secondary' | 'tertiary';
+  align: 'left' | 'center' | 'right';
 }
 
 export const TitleStyled = styled.h1<TitleStyledProps>`
@@ -11,7 +12,7 @@ export const TitleStyled = styled.h1<TitleStyledProps>`
   font-family: var(--font-family-inter-bold);
   font-weight: var(--font-weight-l);
   color: var(--color-${({ color }) => color});
-  text-align: center;
+  text-align: ${({ align }) => align};
   margin: var(--margin-m) 0;
   padding: 0;
 
