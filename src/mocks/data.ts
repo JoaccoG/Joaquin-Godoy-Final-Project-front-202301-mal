@@ -1,3 +1,4 @@
+import { Game } from '../models/game-model';
 import { Post } from '../models/post-model';
 import { User } from '../models/user-model';
 
@@ -75,15 +76,29 @@ export const mockedPosts: Post[] = [
   },
 ];
 
-export const mockedGames = [
+export const mockedGames: Game[] = [
   {
     _id: 'game-1',
     name: 'Game 1',
     banner: '',
+    description: 'Game 1',
+    launch: new Date('01-01-2001'),
+    mode: 'singleplayer',
+    posts: [],
+    rating: 4,
+    studio: 'Game 1',
+    tags: [],
   },
   {
     _id: 'game-2',
     name: 'Game 2',
     banner: '',
+    description: 'Game 2',
+    launch: new Date('02-02-2002'),
+    mode: 'multiplayer',
+    posts: [],
+    rating: 3,
+    studio: 'Game 2',
+    tags: [],
   },
 ];
