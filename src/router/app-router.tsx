@@ -5,6 +5,8 @@ import ErrorsPage from '../pages/Error/Error';
 import Home from '../pages/Home/Home';
 import RequireAuth from '../shared/RequireAuth/RequireAuth';
 import Profile from '../pages/Profile/Profile';
+import Games from '../pages/Games/Games';
+import Game from '../pages/Game/Game';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,22 @@ const router = createBrowserRouter([
         element: (
           <RequireAuth>
             <Profile />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'games',
+        element: (
+          <RequireAuth>
+            <Games />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: 'games/:id',
+        element: (
+          <RequireAuth>
+            <Game />
           </RequireAuth>
         ),
       },

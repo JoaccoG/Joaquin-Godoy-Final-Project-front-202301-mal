@@ -17,7 +17,7 @@ const PostCardList = () => {
   }, [dispatch]);
 
   // Due to how jsdom works, there is no current way to cover the infinite scroll "next" function with Jest.
-  // Cypress E2E test must be written to test and cover it.
+  // Cypress tests the right behaviour of this function with an E2E test.
   /* istanbul ignore next */
   const handleScroll = () => {
     dispatch(getAllPosts({ offset: posts.length, limit: 4 }));

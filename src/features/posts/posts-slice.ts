@@ -84,6 +84,12 @@ export const postsSlice = createSlice({
     resetPosts: (state) => {
       state.posts = [];
       state.postsCount = 0;
+      state.postGetMsg = '';
+      state.postGetStatus = 'idle';
+    },
+    resetPostCreationStatus: (state) => {
+      state.postCreationStatus = 'idle';
+      state.postCreationMsg = '';
     },
   },
   extraReducers: (builder) => {
@@ -148,6 +154,7 @@ export const postsSlice = createSlice({
 });
 
 export const selectPostsSlice = (state: RootState) => state.posts;
-export const { uploadFile, resetPosts } = postsSlice.actions;
+export const { uploadFile, resetPosts, resetPostCreationStatus } =
+  postsSlice.actions;
 
 export default postsSlice.reducer;

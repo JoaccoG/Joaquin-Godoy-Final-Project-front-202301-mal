@@ -16,6 +16,7 @@ const Header = () => {
 
   const handleLogout = () => {
     dispatch(logoutUser());
+    setIsOpen(false);
   };
 
   return (
@@ -38,6 +39,7 @@ const Header = () => {
               <NavLink
                 to={'./'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="home-link"
               >
                 <FontAwesomeIcon
@@ -51,6 +53,7 @@ const Header = () => {
               <NavLink
                 to={`./user/${sessionStorage.getItem('user')}`}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="profile-link"
               >
                 <FontAwesomeIcon
@@ -64,6 +67,7 @@ const Header = () => {
               <NavLink
                 to={'./games'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="games-link"
               >
                 <FontAwesomeIcon
@@ -77,6 +81,7 @@ const Header = () => {
               <NavLink
                 to={'./statistics'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="statistics-link"
               >
                 <FontAwesomeIcon
@@ -90,6 +95,7 @@ const Header = () => {
               <NavLink
                 to={'./notifications'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="notifications-link"
               >
                 <FontAwesomeIcon
@@ -103,6 +109,7 @@ const Header = () => {
               <NavLink
                 to={'./messages'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="messages-link"
               >
                 <FontAwesomeIcon
@@ -116,6 +123,7 @@ const Header = () => {
               <NavLink
                 to={'./contact'}
                 className={({ isActive }) => (isActive ? 'active' : '')}
+                onClick={() => setIsOpen(false)}
                 data-testid="contact-link"
               >
                 <FontAwesomeIcon
