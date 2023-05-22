@@ -137,6 +137,19 @@ export const handlers = [
       );
     }
   ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/games/${mockedGames[0]._id}`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          msg: 'Successfully fetched games',
+          gameData: mockedGames[0],
+        })
+      );
+    }
+  ),
 ];
 
 export const errorHandlers = [
@@ -193,6 +206,18 @@ export const errorHandlers = [
         ctx.status(500),
         ctx.json({
           msg: 'Error while fetching games',
+        })
+      );
+    }
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/api/v1/games/${mockedGames[0]._id}`,
+    async (_req, res, ctx) => {
+      return res(
+        ctx.status(500),
+        ctx.json({
+          msg: 'Error while fetching game data',
         })
       );
     }
