@@ -7,10 +7,7 @@ import GameCard from './GameCard';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
-afterAll(() => {
-  sessionStorage.clear();
-  server.close();
-});
+afterAll(() => server.close());
 
 describe('Given a game card component', () => {
   describe('When the component is rendered', () => {
